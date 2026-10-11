@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="730" viewBox="0 0 1360 730">
+<rect width="100%" height="100%" fill="white"/>
+<text x="36" y="44" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start">系统数据流图：上下文</text>
+<text x="36" y="76" fill="#627c90" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">单机系统的输入、输出与外部接口；不将模型 API 视为数据库计算器。</text>
+<polyline points="315,211.0 505,211.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="505.0,211.0 496.9,214.9 496.9,207.1" fill="#7892a4"/>
+<text x="410.0" y="204.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">官方文件与元数据</text>
+<polyline points="765,211.0 955,211.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="955.0,211.0 946.9,214.9 946.9,207.1" fill="#7892a4"/>
+<text x="860.0" y="204.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">明细 / 指标 / 报告</text>
+<polyline points="955,240 765,240" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="765.0,240.0 773.1,236.1 773.1,243.9" fill="#7892a4"/>
+<text x="860.0" y="233.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">查询 / 维护 / 导出请求</text>
+<polyline points="545,282 545,465" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="545.0,465.0 541.1,456.9 548.9,456.9" fill="#7892a4"/>
+<text x="560.0" y="366.5" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">确定汇总请求</text>
+<polyline points="705,465 705,282" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="705.0,282.0 708.9,290.1 701.1,290.1" fill="#7892a4"/>
+<text x="720.0" y="366.5" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">生成简报文本</text>
+<rect x="55" y="140" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M63 140h244q8 0 8 8v45h-260V148q0-8 8-8" fill="#edf5f7"/>
+<text x="70" y="165" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">外部实体：官方数据源</text>
+<text x="70" y="186" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Sources</text>
+<text x="70" y="218" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">事故、车辆、人员</text>
+<text x="70" y="240" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">采样流量、道路、节点</text>
+<text x="70" y="262" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">发布记录与元数据</text>
+<rect x="505" y="140" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M513 140h244q8 0 8 8v45h-260V148q0-8 8-8" fill="#edf5f7"/>
+<text x="520" y="165" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">处理：交通数据库系统</text>
+<text x="520" y="186" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">System</text>
+<text x="520" y="218" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">导入与质量管理</text>
+<text x="520" y="240" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">查询、空间、统计与预测</text>
+<text x="520" y="262" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">权限、报告与运行维护</text>
+<rect x="955" y="140" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M963 140h244q8 0 8 8v45h-260V148q0-8 8-8" fill="#edf5f7"/>
+<text x="970" y="165" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">外部实体：业务用户</text>
+<text x="970" y="186" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Users</text>
+<text x="970" y="218" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">筛选、维护、报告请求</text>
+<text x="970" y="240" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">接收明细/地图/分析结果</text>
+<text x="970" y="262" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">管理员 / 维护 / 分析</text>
+<rect x="505" y="465" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M513 465h244q8 0 8 8v45h-260V473q0-8 8-8" fill="#edf5f7"/>
+<text x="520" y="490" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">外部实体：模型 API</text>
+<text x="520" y="511" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">ModelAPI</text>
+<text x="520" y="543" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">接收确定的汇总上下文</text>
+<text x="520" y="565" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">返回简报文字及建议</text>
+<text x="520" y="587" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">不执行任意 SQL</text>
+<text x="36" y="708" fill="#6a8193" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">箭头表示数据流；矩形注明外部实体、处理过程或数据存储，不表示已经实现全部流程。</text>
+</svg>

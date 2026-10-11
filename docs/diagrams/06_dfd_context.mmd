@@ -1,0 +1,10 @@
+flowchart LR
+    Sources["外部实体：官方数据源<br/>事故、车辆、人员<br/>采样流量、道路、节点<br/>发布记录与元数据"]
+    System["处理：交通数据库系统<br/>导入与质量管理<br/>查询、空间、统计与预测<br/>权限、报告与运行维护"]
+    Users["外部实体：业务用户<br/>筛选、维护、报告请求<br/>接收明细/地图/分析结果<br/>管理员 / 维护 / 分析"]
+    ModelAPI["外部实体：模型 API<br/>接收确定的汇总上下文<br/>返回简报文字及建议<br/>不执行任意 SQL"]
+    Sources -->|"官方文件与元数据"| System
+    System -->|"明细 / 指标 / 报告"| Users
+    Users -->|"查询 / 维护 / 导出请求"| System
+    System -->|"确定汇总请求"| ModelAPI
+    ModelAPI -->|"生成简报文本"| System

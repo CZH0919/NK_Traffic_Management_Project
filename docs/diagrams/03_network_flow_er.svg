@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="930" viewBox="0 0 1360 930">
+<rect width="100%" height="100%" fill="white"/>
+<text x="36" y="44" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start">道路网络与采样交通流量 E-R 图</text>
+<text x="36" y="76" fill="#627c90" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">空间结构按来源版本管理；流量观测的冲突候选键不设唯一约束。</text>
+<polyline points="315,196.0 505,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="505.0,196.0 496.9,199.9 496.9,192.1" fill="#7892a4"/>
+<text x="410.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="765,196.0 955,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="955.0,196.0 946.9,199.9 946.9,192.1" fill="#7892a4"/>
+<text x="860.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N × 两端</text>
+<polyline points="185,125 185,99 1085,99 1085,125" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1085.0,125.0 1081.1,116.9 1088.9,116.9" fill="#7892a4"/>
+<text x="635.0" y="92.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="315,496.0 505,496.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="505.0,496.0 496.9,499.9 496.9,492.1" fill="#7892a4"/>
+<text x="410.0" y="489.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="765,496.0 955,496.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="955.0,496.0 946.9,499.9 946.9,492.1" fill="#7892a4"/>
+<text x="860.0" y="489.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="635.0,567 635.0,725" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="635.0,725.0 631.1,716.9 638.9,716.9" fill="#7892a4"/>
+<text x="650.0" y="639.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">1:N</text>
+<polyline points="765,796 1085,796 1085,567" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1085.0,567.0 1088.9,575.1 1081.1,575.1" fill="#7892a4"/>
+<text x="925.0" y="789.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<rect x="55" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M63 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="70" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">道路网络版本</text>
+<text x="70" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">NetworkVersion</text>
+<text x="70" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK road/node snapshot</text>
+<text x="70" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">来源版本、原始 CRS</text>
+<text x="70" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">不与旧路段编号混用</text>
+<rect x="505" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M513 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="520" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">节点 / 路口</text>
+<text x="520" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Junction</text>
+<text x="520" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK network_id</text>
+<text x="520" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ 版本 + 来源节点编号</text>
+<text x="520" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">点几何、可空路口分类</text>
+<rect x="955" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M963 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="970" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">道路路段</text>
+<text x="970" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">RoadSegment</text>
+<text x="970" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK network / nodes</text>
+<text x="970" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ 版本 + 来源要素编号</text>
+<text x="970" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">路段号、线几何、长度米</text>
+<rect x="55" y="425" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M63 425h244q8 0 8 8v45h-260V433q0-8 8-8" fill="#edf5f7"/>
+<text x="70" y="450" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">采样请求</text>
+<text x="70" y="471" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">SamplingRequest</text>
+<text x="70" y="503" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK source_id</text>
+<text x="70" y="525" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ 来源 + 请求编号</text>
+<text x="70" y="547" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">不是长期在线设备</text>
+<rect x="505" y="425" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M513 425h244q8 0 8 8v45h-260V433q0-8 8-8" fill="#edf5f7"/>
+<text x="520" y="450" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">采样地点与方向</text>
+<text x="520" y="471" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">SamplingSite</text>
+<text x="520" y="503" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK request / borough</text>
+<text x="520" y="525" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">旧路段编号、方向、地点</text>
+<text x="520" y="547" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">点几何、来源网络说明</text>
+<rect x="955" y="425" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M963 425h244q8 0 8 8v45h-260V433q0-8 8-8" fill="#edf5f7"/>
+<text x="970" y="450" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">15 分钟观测</text>
+<text x="970" y="471" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">TrafficObservation</text>
+<text x="970" y="503" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK raw / site / conflict</text>
+<text x="970" y="525" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">当地时段、UTC 状态、流量</text>
+<text x="970" y="547" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">原值 0 与缺测不同</text>
+<rect x="505" y="725" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M513 725h244q8 0 8 8v45h-260V733q0-8 8-8" fill="#edf5f7"/>
+<text x="520" y="750" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">流量冲突组</text>
+<text x="520" y="771" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">FlowConflict</text>
+<text x="520" y="803" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK site_id</text>
+<text x="520" y="825" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ 地点 + 日期 + 时刻</text>
+<text x="520" y="847" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">核查状态与依据</text>
+<text x="36" y="908" fill="#6a8193" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">箭头由主实体指向引用实体；1:N 表示一对多，可空外键见数据字典。</text>
+</svg>

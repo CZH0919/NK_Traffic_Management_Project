@@ -1,0 +1,8 @@
+erDiagram
+    DataSource ||--o{ Snapshot : "1:N"
+    Snapshot ||--o{ StagedRecord : "1:N"
+    StagedRecord o|--o{ QualityIssue : "0..1:N"
+    Snapshot ||--o{ ImportBatch : "1:N"
+    User o|--o{ ImportBatch : "0..1:N"
+    User o|--o{ AuditEvent : "0..1:N"
+    AuditEvent ||--o{ FieldChange : "1:N"

@@ -1,0 +1,5 @@
+<section class="surface" {% if item.status != 'failed' %}data-report-progress="{% url 'report_job_status' item_kind item.pk %}"{% endif %}>
+  <h2>{{ item.get_status_display }}</h2>
+  {% if item.status == 'failed' %}<p class="notice notice-warning">{{ error_message }}</p>{% else %}<p data-progress-message>结果准备完成后页面会自动更新；处理过程不会修改原始业务事实。</p>{% endif %}
+  {% if not worker_online %}<p class="notice notice-warning">后台分析服务当前离线，等待中的任务会在服务启动后处理。</p>{% endif %}
+</section>

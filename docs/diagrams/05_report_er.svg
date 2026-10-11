@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="1240" viewBox="0 0 1260 1240">
+<rect width="100%" height="100%" fill="white"/>
+<text x="36" y="44" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start">报告、导出与模型简报 E-R 图</text>
+<text x="36" y="76" fill="#627c90" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">当前物理结构；版本为 JSON 副本。个人查询提供条件，不伪造查询或修订水位外键。</text>
+<polyline points="300,196.0 500,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="500.0,196.0 491.9,199.9 491.9,192.1" fill="#7892a4"/>
+<text x="400.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="960,197 760,197" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="760.0,197.0 768.1,193.1 768.1,200.9" fill="#7892a4"/>
+<text x="860.0" y="190.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<polyline points="960,496 875,496 875,232 760,232" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="760.0,232.0 768.1,228.1 768.1,235.9" fill="#7892a4"/>
+<text x="890.0" y="357.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">0..1:N</text>
+<polyline points="630.0,267 630.0,425" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="630.0,425.0 626.1,416.9 633.9,416.9" fill="#7892a4"/>
+<text x="645.0" y="339.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">1:N</text>
+<polyline points="300,496.0 500,496.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="500.0,496.0 491.9,499.9 491.9,492.1" fill="#7892a4"/>
+<text x="400.0" y="489.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="500,240 410,240 410,796 500,796" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="500.0,796.0 491.9,799.9 491.9,792.1" fill="#7892a4"/>
+<text x="425" y="620" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">1:N</text>
+<polyline points="540,267 540,320 355,320 355,675 170,675 170,725" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="170.0,725.0 166.1,716.9 173.9,716.9" fill="#7892a4"/>
+<text x="285" y="635" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">0..1:N</text>
+<polyline points="760,796.0 960,796.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="960.0,796.0 951.9,799.9 951.9,792.1" fill="#7892a4"/>
+<text x="860.0" y="789.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="630.0,867 630.0,1025" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="630.0,1025.0 626.1,1016.9 633.9,1016.9" fill="#7892a4"/>
+<text x="645.0" y="939.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">1:N</text>
+<rect x="40" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">报告所有者</text>
+<text x="55" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">User</text>
+<text x="55" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；三类业务角色</text>
+<text x="55" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">报告、附件与简报按 owner 隔离</text>
+<text x="55" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">所有写操作校验权限</text>
+<rect x="500" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M508 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="515" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">保存的分析报告</text>
+<text x="515" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Report</text>
+<text x="515" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK UUID；FK owner / 分析任务</text>
+<text x="515" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">conditions / payload / data_version</text>
+<text x="515" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">成功后不可改写</text>
+<rect x="960" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M968 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="975" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">已完成风险计算</text>
+<text x="975" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">RiskRun</text>
+<text x="975" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK UUID；不可变结果子表</text>
+<text x="975" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">保存规则与原分析时间</text>
+<text x="975" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">报告 kind 与来源类型一致</text>
+<rect x="40" y="425" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 425h244q8 0 8 8v45h-260V433q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="450" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">发布来源快照</text>
+<text x="55" y="471" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Snapshot</text>
+<text x="55" y="503" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK source</text>
+<text x="55" y="525" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">日期范围、版本与来源标识</text>
+<text x="55" y="547" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">与原始证据保持关联</text>
+<rect x="500" y="425" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M508 425h244q8 0 8 8v45h-260V433q0-8 8-8" fill="#edf5f7"/>
+<text x="515" y="450" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">报告来源关联</text>
+<text x="515" y="471" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">ReportSnapshot</text>
+<text x="515" y="503" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK report / snapshot</text>
+<text x="515" y="525" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ report + snapshot</text>
+<text x="515" y="547" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">仅运行中报告可追加</text>
+<rect x="960" y="425" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M968 425h244q8 0 8 8v45h-260V433q0-8 8-8" fill="#edf5f7"/>
+<text x="975" y="450" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">已完成预测计算</text>
+<text x="975" y="471" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">ForecastRun</text>
+<text x="975" y="503" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK UUID；不可变预测及回测</text>
+<text x="975" y="525" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">history / summary / rule</text>
+<text x="975" y="547" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">报告保存确定分析结果</text>
+<rect x="40" y="725" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 725h244q8 0 8 8v45h-260V733q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="750" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">完整附件导出</text>
+<text x="55" y="771" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">ExportJob</text>
+<text x="55" y="803" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK UUID；FK owner / report 可空</text>
+<text x="55" y="825" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">条件、元数据、路径及完整行数</text>
+<text x="55" y="847" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">CSV 分卷 / Excel 分表</text>
+<rect x="500" y="725" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M508 725h244q8 0 8 8v45h-260V733q0-8 8-8" fill="#edf5f7"/>
+<text x="515" y="750" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">模型简报</text>
+<text x="515" y="771" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AIBrief</text>
+<text x="515" y="803" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK UUID；FK report / owner</text>
+<text x="515" y="825" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">输入、模型原文、渲染稿</text>
+<text x="515" y="847" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">当前编辑稿与版本号</text>
+<rect x="960" y="725" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M968 725h244q8 0 8 8v45h-260V733q0-8 8-8" fill="#edf5f7"/>
+<text x="975" y="750" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">模型调用尝试</text>
+<text x="975" y="771" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AIRequest</text>
+<text x="975" y="803" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK bigint；FK brief</text>
+<text x="975" y="825" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ brief + attempt</text>
+<text x="975" y="847" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">状态、耗时、用量；不存密钥</text>
+<rect x="500" y="1025" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M508 1025h244q8 0 8 8v45h-260V1033q0-8 8-8" fill="#edf5f7"/>
+<text x="515" y="1050" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">人工编辑证据</text>
+<text x="515" y="1071" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">BriefRevision</text>
+<text x="515" y="1103" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK bigint；FK brief / actor</text>
+<text x="515" y="1125" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ brief + number</text>
+<text x="515" y="1147" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">文本与时间，不可覆盖</text>
+<text x="36" y="1218" fill="#6a8193" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">箭头由主实体指向引用实体；1:N 表示一对多，可空外键见数据字典。</text>
+</svg>

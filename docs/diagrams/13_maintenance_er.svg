@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="450" viewBox="0 0 1260 450">
+<rect width="100%" height="100%" fill="white"/>
+<text x="36" y="44" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start">运行维护与执行证据 E-R 图</text>
+<text x="36" y="76" fill="#627c90" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">当前物理结构；审计对象编号为逻辑定位，未伪造维护记录与审计记录之间的数据库外键。</text>
+<polyline points="300,196.0 500,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="500.0,196.0 491.9,199.9 491.9,192.1" fill="#7892a4"/>
+<text x="400.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="170,125 170,100 1090,100 1090,125" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1090.0,125.0 1086.1,116.9 1093.9,116.9" fill="#7892a4"/>
+<text x="630.0" y="93.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<polyline points="760,197 890,197 890,370 630,370 630,267" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="630.0,267.0 633.9,275.1 626.1,275.1" fill="#7892a4"/>
+<text x="760.0" y="363.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N 来源备份</text>
+<rect x="40" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">应用账户</text>
+<text x="55" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">User</text>
+<text x="55" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；受控管理角色</text>
+<text x="55" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">执行归属与页面权限分开核查</text>
+<text x="55" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">本地配置提供数据库连接</text>
+<rect x="500" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M508 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="515" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">备份与隔离恢复</text>
+<text x="515" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">MaintenanceRun</text>
+<text x="515" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK UUID；FK actor / source_run</text>
+<text x="515" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">目标、范围、结果、时间与摘要</text>
+<text x="515" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">成功或失败结束后不可改写</text>
+<rect x="960" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M968 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="975" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">不可变操作记录</text>
+<text x="975" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AuditEvent</text>
+<text x="975" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK actor 可空</text>
+<text x="975" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">动作、对象编号、结果与时间</text>
+<text x="975" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">不保留密钥或连接字符串</text>
+<text x="36" y="428" fill="#6a8193" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">箭头由主实体指向引用实体；1:N 表示一对多，可空外键见数据字典。</text>
+</svg>

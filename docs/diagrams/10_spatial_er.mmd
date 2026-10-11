@@ -1,0 +1,10 @@
+erDiagram
+    NetworkVersion ||--o{ SpatialRun : "1:N"
+    Collision ||--o{ SpatialMatch : "1:N"
+    RoadSegment o|--o{ SpatialMatch : "0..1:N"
+    Junction o|--o{ SpatialMatch : "0..1:N"
+    SamplingSite ||--o{ SamplingRoadMatch : "1:N"
+    RoadSegment o|--o{ SamplingRoadMatch : "0..1:N"
+    SamplingSite ||--o{ TrafficObservation : "1:N"
+    SamplingRoadMatch ||--o{ AuditEvent : "操作留痕"
+    SpatialRun o|--o{ SamplingRoadMatch : "0..1:N"

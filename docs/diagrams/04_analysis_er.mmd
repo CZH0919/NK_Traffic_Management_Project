@@ -1,0 +1,8 @@
+erDiagram
+    RuleVersion ||--o{ ForecastRun : "1:N"
+    AnalysisTarget ||--o{ ForecastRun : "1:N"
+    NetworkVersion o|--o{ ForecastRun : "0..1:N"
+    User ||--o{ ForecastRun : "1:N"
+    ForecastRun ||--o{ ForecastPoint : "1:N"
+    ForecastRun ||--o{ BacktestFold : "1:N"
+    ForecastRun ||--o{ AnomalyResult : "1:N"

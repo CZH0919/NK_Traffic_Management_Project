@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="975" viewBox="0 0 1360 975">
+<rect width="100%" height="100%" fill="white"/>
+<text x="36" y="44" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start">系统数据流图：一级分解</text>
+<text x="36" y="76" fill="#627c90" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">原始证据、业务状态、派生结果分开存储；各处理均接受权限校验并留痕。</text>
+<polyline points="300,196.0 370,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="370.0,196.0 361.9,199.9 361.9,192.1" fill="#7892a4"/>
+<text x="335.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">来源证据</text>
+<polyline points="630,196.0 700,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="700.0,196.0 691.9,199.9 691.9,192.1" fill="#7892a4"/>
+<text x="665.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">核查资料</text>
+<polyline points="960,196.0 1030,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1030.0,196.0 1021.9,199.9 1021.9,192.1" fill="#7892a4"/>
+<text x="995.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">实体修订</text>
+<polyline points="1160.0,267 1160.0,445" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1160.0,445.0 1156.1,436.9 1163.9,436.9" fill="#7892a4"/>
+<text x="1175.0" y="349.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">筛选范围内数据</text>
+<polyline points="1030,520 960,520" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="960.0,520.0 968.1,516.1 968.1,523.9" fill="#7892a4"/>
+<text x="995.0" y="513.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">时序汇总</text>
+<polyline points="700,520 630,520" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="630.0,520.0 638.1,516.1 638.1,523.9" fill="#7892a4"/>
+<text x="665.0" y="513.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">分析结果</text>
+<polyline points="500.0,587 500.0,765" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="500.0,765.0 496.1,756.9 503.9,756.9" fill="#7892a4"/>
+<text x="515.0" y="669.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">结果、文本、版本</text>
+<polyline points="830.0,587 830.0,765" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="830.0,765.0 826.1,756.9 833.9,756.9" fill="#7892a4"/>
+<text x="845.0" y="669.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">规则与派生结果</text>
+<polyline points="170,765 170,587" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="170.0,587.0 173.9,595.1 166.1,595.1" fill="#7892a4"/>
+<text x="185.0" y="669.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">账户 / 维护结果</text>
+<polyline points="170,445 170,267" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="170.0,267.0 173.9,275.1 166.1,275.1" fill="#7892a4"/>
+<text x="185.0" y="349.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">权限校验 / 关键日志</text>
+<rect x="40" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">P1 数据接入与校验</text>
+<text x="55" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">P1</text>
+<text x="55" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">输入：官方文件和元数据</text>
+<text x="55" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">输出：校验记录、批次结果</text>
+<text x="55" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">失败/待核查有明确去向</text>
+<rect x="370" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M378 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="385" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">D1 来源证据存储</text>
+<text x="385" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">D1</text>
+<text x="385" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">Source / Snapshot / Raw</text>
+<text x="385" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">Batch / QualityIssue</text>
+<text x="385" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">不可变原始载荷</text>
+<rect x="700" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M708 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="715" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">P2 维护与关联</text>
+<text x="715" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">P2</text>
+<text x="715" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">校验来源引用、事务修正</text>
+<text x="715" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">空间匹配、质量处置</text>
+<text x="715" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">记录变更前后值</text>
+<rect x="1030" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M1038 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="1045" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">D2 业务事实存储</text>
+<text x="1045" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">D2</text>
+<text x="1045" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">事故 / 车辆 / 人员</text>
+<text x="1045" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">道路 / 节点 / 观测</text>
+<text x="1045" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">当前状态与修订版本</text>
+<rect x="40" y="445" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 445h244q8 0 8 8v45h-260V453q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="470" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">D5 权限与操作记录</text>
+<text x="55" y="491" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">D5</text>
+<text x="55" y="523" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">User / Group / Permission</text>
+<text x="55" y="545" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">AuditEvent / FieldChange</text>
+<text x="55" y="567" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">MaintenanceRun</text>
+<rect x="370" y="445" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M378 445h244q8 0 8 8v45h-260V453q0-8 8-8" fill="#edf5f7"/>
+<text x="385" y="470" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">P5 报告与简报</text>
+<text x="385" y="491" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">P5</text>
+<text x="385" y="523" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">读取确定指标与版本</text>
+<text x="385" y="545" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">API 文本生成、编辑、保存</text>
+<text x="385" y="567" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">CSV / Excel / 打印</text>
+<rect x="700" y="445" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M708 445h244q8 0 8 8v45h-260V453q0-8 8-8" fill="#edf5f7"/>
+<text x="715" y="470" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">P4 风险、预测与回测</text>
+<text x="715" y="491" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">P4</text>
+<text x="715" y="523" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">历史评分 / 未来外推</text>
+<text x="715" y="545" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">朴素基线 / 时序回测</text>
+<text x="715" y="567" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">结果及适用性说明</text>
+<rect x="1030" y="445" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M1038 445h244q8 0 8 8v45h-260V453q0-8 8-8" fill="#edf5f7"/>
+<text x="1045" y="470" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">P3 查询与聚合</text>
+<text x="1045" y="491" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">P3</text>
+<text x="1045" y="523" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">统一筛选、分页、空间 SQL</text>
+<text x="1045" y="545" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">按统计单位汇总</text>
+<text x="1045" y="567" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">地图/图表/明细下钻</text>
+<rect x="40" y="765" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 765h244q8 0 8 8v45h-260V773q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="790" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">P6 账户与运行维护</text>
+<text x="55" y="811" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">P6</text>
+<text x="55" y="843" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">账户授权、配置</text>
+<text x="55" y="865" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">备份、隔离恢复与核验</text>
+<text x="55" y="887" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">维护结果记录</text>
+<rect x="370" y="765" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M378 765h244q8 0 8 8v45h-260V773q0-8 8-8" fill="#edf5f7"/>
+<text x="385" y="790" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">D4 报告历史存储</text>
+<text x="385" y="811" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">D4</text>
+<text x="385" y="843" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">SavedQuery / Report</text>
+<text x="385" y="865" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">ReportSnapshot / AIBrief</text>
+<text x="385" y="887" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">AIRequest</text>
+<rect x="700" y="765" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M708 765h244q8 0 8 8v45h-260V773q0-8 8-8" fill="#edf5f7"/>
+<text x="715" y="790" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">D3 规则与派生存储</text>
+<text x="715" y="811" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">D3</text>
+<text x="715" y="843" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">RuleVersion / DataRevision</text>
+<text x="715" y="865" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">Risk / Forecast / Backtest</text>
+<text x="715" y="887" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">AggregateCache / Anomaly</text>
+<text x="36" y="953" fill="#6a8193" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">箭头表示数据流；矩形注明外部实体、处理过程或数据存储，不表示已经实现全部流程。</text>
+</svg>

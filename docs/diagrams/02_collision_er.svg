@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="980" viewBox="0 0 1360 980">
+<rect width="100%" height="100%" fill="white"/>
+<text x="36" y="44" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start">事故、车辆、人员与因素 E-R 图</text>
+<text x="36" y="76" fill="#627c90" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">各来源实体另引用来源与原始行；缺少明细不代表事故或伤亡为零。</text>
+<polyline points="315,196.0 505,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="505.0,196.0 496.9,199.9 496.9,192.1" fill="#7892a4"/>
+<text x="410.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<polyline points="765,196.0 955,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="955.0,196.0 946.9,199.9 946.9,192.1" fill="#7892a4"/>
+<text x="860.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<polyline points="1085.0,267 1085.0,425" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1085.0,425.0 1081.1,416.9 1088.9,416.9" fill="#7892a4"/>
+<text x="1100.0" y="339.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">0..1:N</text>
+<polyline points="635.0,267 635.0,346.0 185.0,346.0 185.0,425" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="185.0,425.0 181.1,416.9 188.9,416.9" fill="#7892a4"/>
+<text x="410.0" y="339.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="1085,267 1085,330 635,330 635,425" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="635.0,425.0 631.1,416.9 638.9,416.9" fill="#7892a4"/>
+<text x="860.0" y="323.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="1085.0,567 1085.0,725" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1085.0,725.0 1081.1,716.9 1088.9,716.9" fill="#7892a4"/>
+<text x="1100.0" y="639.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">1:N</text>
+<polyline points="635,725 635,567" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="635.0,567.0 638.9,575.1 631.1,575.1" fill="#7892a4"/>
+<text x="650.0" y="639.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">1:N</text>
+<polyline points="505,796 400,796 400,620 185,620 185,567" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="185.0,567.0 188.9,575.1 181.1,575.1" fill="#7892a4"/>
+<text x="292.5" y="613.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="765,796.0 955,796.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="955.0,796.0 946.9,799.9 946.9,792.1" fill="#7892a4"/>
+<text x="860.0" y="789.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="1215,190 1280,190 1280,920 185,920 185,867" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="185.0,867.0 188.9,875.1 181.1,875.1" fill="#7892a4"/>
+<text x="732.5" y="913.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="765,225 835,225 835,495 955,495" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="955.0,495.0 946.9,498.9 946.9,491.1" fill="#7892a4"/>
+<text x="850.0" y="353.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">0..1:N</text>
+<rect x="55" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M63 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="70" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">行政区</text>
+<text x="70" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Borough</text>
+<text x="70" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK code (1—5)</text>
+<text x="70" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">英文名、中文名</text>
+<text x="70" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">可空边界及来源快照</text>
+<rect x="505" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M513 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="520" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">事故</text>
+<text x="520" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Collision</text>
+<text x="520" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；来源键唯一</text>
+<text x="520" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">纽约日期/时刻、UTC 状态</text>
+<text x="520" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">可空位置、事故级伤亡</text>
+<rect x="955" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M963 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="970" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">车辆</text>
+<text x="970" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Vehicle</text>
+<text x="970" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK collision_id</text>
+<text x="970" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">来源 unique_id 与 UUID</text>
+<text x="970" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">车型、行驶及驾驶属性</text>
+<rect x="55" y="425" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M63 425h244q8 0 8 8v45h-260V433q0-8 8-8" fill="#edf5f7"/>
+<text x="70" y="450" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">事故来源槽位</text>
+<text x="70" y="471" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">CollisionFactor</text>
+<text x="70" y="503" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK collision / factor</text>
+<text x="70" y="525" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ 事故 + 槽位 (1—5)</text>
+<text x="70" y="547" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">来源车型；不猜配车辆</text>
+<rect x="505" y="425" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M513 425h244q8 0 8 8v45h-260V433q0-8 8-8" fill="#edf5f7"/>
+<text x="520" y="450" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">车辆因素</text>
+<text x="520" y="471" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">VehicleFactor</text>
+<text x="520" y="503" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK vehicle / factor</text>
+<text x="520" y="525" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ 车辆 + 槽位 (1—2)</text>
+<text x="520" y="547" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">按车辆来源字段保留</text>
+<rect x="955" y="425" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M963 425h244q8 0 8 8v45h-260V433q0-8 8-8" fill="#edf5f7"/>
+<text x="970" y="450" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">人员</text>
+<text x="970" y="471" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Person</text>
+<text x="970" y="503" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK collision / vehicle</text>
+<text x="970" y="525" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">来源 unique_id、年龄、伤害</text>
+<text x="970" y="547" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">组合外键保证同起事故</text>
+<rect x="55" y="725" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M63 725h244q8 0 8 8v45h-260V733q0-8 8-8" fill="#edf5f7"/>
+<text x="70" y="750" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">车辆损伤位置</text>
+<text x="70" y="771" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">VehicleDamage</text>
+<text x="70" y="803" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK vehicle_id</text>
+<text x="70" y="825" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ 车辆 + 槽位 (0—3)</text>
+<text x="70" y="847" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">来源损伤位置描述</text>
+<rect x="505" y="725" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M513 725h244q8 0 8 8v45h-260V733q0-8 8-8" fill="#edf5f7"/>
+<text x="520" y="750" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">因素字典</text>
+<text x="520" y="771" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Factor</text>
+<text x="520" y="803" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；UQ name</text>
+<text x="520" y="825" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">来源因素原文</text>
+<text x="520" y="847" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">有效状态</text>
+<rect x="955" y="725" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M963 725h244q8 0 8 8v45h-260V733q0-8 8-8" fill="#edf5f7"/>
+<text x="970" y="750" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">人员因素</text>
+<text x="970" y="771" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">PersonFactor</text>
+<text x="970" y="803" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK person / factor</text>
+<text x="970" y="825" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ 人员 + 槽位 (1—2)</text>
+<text x="970" y="847" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">按人员来源字段保留</text>
+<text x="36" y="958" fill="#6a8193" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">箭头由主实体指向引用实体；1:N 表示一对多，可空外键见数据字典。</text>
+</svg>

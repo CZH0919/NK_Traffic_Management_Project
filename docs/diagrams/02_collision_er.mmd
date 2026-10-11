@@ -1,0 +1,12 @@
+erDiagram
+    Borough o|--o{ Collision : "0..1:N"
+    Collision o|--o{ Vehicle : "0..1:N"
+    Vehicle o|--o{ Person : "0..1:N"
+    Collision ||--o{ CollisionFactor : "1:N"
+    Vehicle ||--o{ VehicleFactor : "1:N"
+    Person ||--o{ PersonFactor : "1:N"
+    Factor ||--o{ VehicleFactor : "1:N"
+    Factor ||--o{ CollisionFactor : "1:N"
+    Factor ||--o{ PersonFactor : "1:N"
+    Vehicle ||--o{ VehicleDamage : "1:N"
+    Collision o|--o{ Person : "0..1:N"

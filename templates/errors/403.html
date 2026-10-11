@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block title %}访问受限{% endblock %}{% block content %}<section class="surface empty-state error-state">{% include 'components/icon.html' with name='lock' size='large' %}<h1>当前账户无权访问此内容</h1><p>如需调整访问范围，请联系系统管理员。</p><a class="btn btn-primary" href="{% url 'dashboard' %}">返回工作台</a></section>{% endblock %}

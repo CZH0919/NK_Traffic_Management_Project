@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="995" viewBox="0 0 1360 995">
+<rect width="100%" height="100%" fill="white"/>
+<text x="36" y="44" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start">统计与历史风险数据流</text>
+<text x="36" y="76" fill="#627c90" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">已实现流程；业务事实只读，统计缓存与不可变风险结果分开存储。</text>
+<polyline points="300,201.0 510,201.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="510.0,201.0 501.9,204.9 501.9,197.1" fill="#7892a4"/>
+<text x="405.0" y="194.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">规范化筛选</text>
+<polyline points="770,201.0 980,201.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="980.0,201.0 971.9,204.9 971.9,197.1" fill="#7892a4"/>
+<text x="875.0" y="194.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">指标与明细定位条件</text>
+<polyline points="170,470 170,355 640,355 640,272" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="640.0,272.0 643.9,280.1 636.1,280.1" fill="#7892a4"/>
+<text x="405.0" y="348.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">同一快照</text>
+<polyline points="640.0,272 640.0,470" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="640.0,470.0 636.1,461.9 643.9,461.9" fill="#7892a4"/>
+<text x="655.0" y="364.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">版本校验 / 重算</text>
+<polyline points="770,245 900,245 900,400 1110,400 1110,470" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1110.0,470.0 1106.1,461.9 1113.9,461.9" fill="#7892a4"/>
+<text x="1005.0" y="393.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">母集合与版本</text>
+<polyline points="300,861.0 510,861.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="510.0,861.0 501.9,864.9 501.9,857.1" fill="#7892a4"/>
+<text x="405.0" y="854.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">保留规则引用</text>
+<polyline points="1110,612 1110,680 640,680 640,790" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="640.0,790.0 636.1,781.9 643.9,781.9" fill="#7892a4"/>
+<text x="875.0" y="673.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">原子写入全部结果</text>
+<polyline points="770,861.0 980,861.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="980.0,861.0 971.9,864.9 971.9,857.1" fill="#7892a4"/>
+<text x="875.0" y="854.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">确定结果</text>
+<polyline points="1110.0,612 1110.0,790" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1110.0,790.0 1106.1,781.9 1113.9,781.9" fill="#7892a4"/>
+<text x="1125.0" y="694.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">任务状态</text>
+<rect x="40" y="130" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 130h244q8 0 8 8v45h-260V138q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="155" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">输入：统一条件</text>
+<text x="55" y="176" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Filters</text>
+<text x="55" y="208" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">时间、区域、空间与类别</text>
+<text x="55" y="230" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">个人查询持有表达版本</text>
+<text x="55" y="252" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">服务端验证与角色授权</text>
+<rect x="510" y="130" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M518 130h244q8 0 8 8v45h-260V138q0-8 8-8" fill="#edf5f7"/>
+<text x="525" y="155" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">处理：事故母集合</text>
+<text x="525" y="176" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Cohort</text>
+<text x="525" y="208" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">官方 / 有效 / 已发布</text>
+<text x="525" y="230" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">纽约当地日历与空间资格</text>
+<text x="525" y="252" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">车辆／人员分开聚合</text>
+<rect x="980" y="130" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M988 130h244q8 0 8 8v45h-260V138q0-8 8-8" fill="#edf5f7"/>
+<text x="995" y="155" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">输出：统计与对比</text>
+<text x="995" y="176" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Statistics</text>
+<text x="995" y="208" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">图表、分页表与地图</text>
+<text x="995" y="230" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">同口径明细下钻</text>
+<text x="995" y="252" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">零值、缺失、覆盖分开</text>
+<rect x="40" y="470" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 470h244q8 0 8 8v45h-260V478q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="495" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">存储：业务与来源</text>
+<text x="55" y="516" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Facts</text>
+<text x="55" y="548" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">Collision / Vehicle / Person</text>
+<text x="55" y="570" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">Snapshot / DataRevision</text>
+<text x="55" y="592" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">SpatialMatch / NetworkVersion</text>
+<rect x="510" y="470" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M518 470h244q8 0 8 8v45h-260V478q0-8 8-8" fill="#edf5f7"/>
+<text x="525" y="495" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">存储：统计缓存</text>
+<text x="525" y="516" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Cache</text>
+<text x="525" y="548" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">条件键 + 数据版本 + 有效期</text>
+<text x="525" y="570" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">版本不符则重算</text>
+<text x="525" y="592" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">不保存原始逐行载荷</text>
+<rect x="980" y="470" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M988 470h244q8 0 8 8v45h-260V478q0-8 8-8" fill="#edf5f7"/>
+<text x="995" y="495" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">处理：后台风险计算</text>
+<text x="995" y="516" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">RiskQueue</text>
+<text x="995" y="548" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">排队 / 执行 / 完成 / 失败</text>
+<text x="995" y="570" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">共享维护锁与一致快照</text>
+<text x="995" y="592" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">特征、参照、百分位与分级</text>
+<rect x="40" y="790" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 790h244q8 0 8 8v45h-260V798q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="815" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">输入：不可变规则</text>
+<text x="55" y="836" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Rule</text>
+<text x="55" y="868" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">固定版本的参数与门槛</text>
+<text x="55" y="890" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">新规则建立新版本</text>
+<text x="55" y="912" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">维护人员记录依据</text>
+<rect x="510" y="790" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M518 790h244q8 0 8 8v45h-260V798q0-8 8-8" fill="#edf5f7"/>
+<text x="525" y="815" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">存储：风险聚合证据</text>
+<text x="525" y="836" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Evidence</text>
+<text x="525" y="868" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">RiskRun + RiskResult</text>
+<text x="525" y="890" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">条件、版本、计数与贡献</text>
+<text x="525" y="912" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">成功结果不可覆盖</text>
+<rect x="980" y="790" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M988 790h244q8 0 8 8v45h-260V798q0-8 8-8" fill="#edf5f7"/>
+<text x="995" y="815" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">输出：风险与支撑</text>
+<text x="995" y="836" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">RiskUI</text>
+<text x="995" y="868" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">排名、等级、热点、详情</text>
+<text x="995" y="890" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">历史结果与当前明细区分</text>
+<text x="995" y="912" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">暴露量服务独立核查</text>
+<text x="36" y="973" fill="#6a8193" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">箭头表示数据流；矩形注明外部实体、处理过程或数据存储，不表示已经实现全部流程。</text>
+</svg>

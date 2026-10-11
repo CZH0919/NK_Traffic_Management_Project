@@ -1,0 +1,10 @@
+erDiagram
+    User ||--o{ Report : "1:N"
+    RiskRun o|--o{ Report : "0..1:N"
+    ForecastRun o|--o{ Report : "0..1:N"
+    Report ||--o{ ReportSnapshot : "1:N"
+    Snapshot ||--o{ ReportSnapshot : "1:N"
+    Report ||--o{ AIBrief : "1:N"
+    Report o|--o{ ExportJob : "0..1:N"
+    AIBrief ||--o{ AIRequest : "1:N"
+    AIBrief ||--o{ BriefRevision : "1:N"

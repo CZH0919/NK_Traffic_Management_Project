@@ -1,0 +1,2 @@
+{% extends 'base.html' %}{% block title %}操作未完成{% endblock %}{% block content %}
+<section class="surface confirm-panel"><h1>操作未完成</h1><div class="notice notice-error" role="alert">{{ error }}</div><p>请核对提示后重试。本次未提交不完整的变更。</p><a class="btn btn-outline-primary" href="{{ back_url }}">返回核对</a></section>{% endblock %}

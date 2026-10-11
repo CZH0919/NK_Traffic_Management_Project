@@ -1,0 +1,19 @@
+flowchart LR
+    Filters["输入：统一条件<br/>时间、区域、空间与类别<br/>个人查询持有表达版本<br/>服务端验证与角色授权"]
+    Cohort["处理：事故母集合<br/>官方 / 有效 / 已发布<br/>纽约当地日历与空间资格<br/>车辆／人员分开聚合"]
+    Statistics["输出：统计与对比<br/>图表、分页表与地图<br/>同口径明细下钻<br/>零值、缺失、覆盖分开"]
+    Facts["存储：业务与来源<br/>Collision / Vehicle / Person<br/>Snapshot / DataRevision<br/>SpatialMatch / NetworkVersion"]
+    Cache["存储：统计缓存<br/>条件键 + 数据版本 + 有效期<br/>版本不符则重算<br/>不保存原始逐行载荷"]
+    RiskQueue["处理：后台风险计算<br/>排队 / 执行 / 完成 / 失败<br/>共享维护锁与一致快照<br/>特征、参照、百分位与分级"]
+    Rule["输入：不可变规则<br/>固定版本的参数与门槛<br/>新规则建立新版本<br/>维护人员记录依据"]
+    Evidence["存储：风险聚合证据<br/>RiskRun + RiskResult<br/>条件、版本、计数与贡献<br/>成功结果不可覆盖"]
+    RiskUI["输出：风险与支撑<br/>排名、等级、热点、详情<br/>历史结果与当前明细区分<br/>暴露量服务独立核查"]
+    Filters -->|"规范化筛选"| Cohort
+    Cohort -->|"指标与明细定位条件"| Statistics
+    Facts -->|"同一快照"| Cohort
+    Cohort -->|"版本校验 / 重算"| Cache
+    Cohort -->|"母集合与版本"| RiskQueue
+    Rule -->|"保留规则引用"| Evidence
+    RiskQueue -->|"原子写入全部结果"| Evidence
+    Evidence -->|"确定结果"| RiskUI
+    RiskQueue -->|"任务状态"| RiskUI

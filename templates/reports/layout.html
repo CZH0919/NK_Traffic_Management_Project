@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/reports.css' %}?v={{ ui_asset_version }}">{% endblock %}
+{% block breadcrumb %}报告与简报{% endblock %}
+{% block scripts %}<script src="{% static 'js/reports.js' %}?v={{ ui_asset_version }}" defer></script>{% endblock %}

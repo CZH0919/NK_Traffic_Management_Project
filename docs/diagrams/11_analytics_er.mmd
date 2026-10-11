@@ -1,0 +1,7 @@
+erDiagram
+    RuleVersion ||--o{ RiskRun : "1:N"
+    RiskRun ||--o{ RiskResult : "1:N"
+    User o|--o{ RuleVersion : "0..1:N"
+    User ||--o{ RiskRun : "1:N"
+    NetworkVersion o|--o{ RiskRun : "0..1:N"
+    AnalysisTarget ||--o{ RiskResult : "1:N"

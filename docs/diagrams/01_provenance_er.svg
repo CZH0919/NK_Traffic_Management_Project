@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="720" viewBox="0 0 1360 720">
+<rect width="100%" height="100%" fill="white"/>
+<text x="36" y="44" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start">来源、质量与操作记录 E-R 图</text>
+<text x="36" y="76" fill="#627c90" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">已建立的来源与证据结构；用户由 Django 认证框架管理。</text>
+<polyline points="300,196.0 370,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="370.0,196.0 361.9,199.9 361.9,192.1" fill="#7892a4"/>
+<text x="335.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="630,196.0 700,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="700.0,196.0 691.9,199.9 691.9,192.1" fill="#7892a4"/>
+<text x="665.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="960,196.0 1030,196.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1030.0,196.0 1021.9,199.9 1021.9,192.1" fill="#7892a4"/>
+<text x="995.0" y="189.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<polyline points="500.0,267 500.0,415" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="500.0,415.0 496.1,406.9 503.9,406.9" fill="#7892a4"/>
+<text x="515.0" y="334.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">1:N</text>
+<polyline points="300,486.0 370,486.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="370.0,486.0 361.9,489.9 361.9,482.1" fill="#7892a4"/>
+<text x="335.0" y="479.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<polyline points="170,557 170,650 830,650 830,557" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="830.0,557.0 833.9,565.1 826.1,565.1" fill="#7892a4"/>
+<text x="500.0" y="643.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<polyline points="960,486.0 1030,486.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1030.0,486.0 1021.9,489.9 1021.9,482.1" fill="#7892a4"/>
+<text x="995.0" y="479.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<rect x="40" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">来源目录</text>
+<text x="55" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">DataSource</text>
+<text x="55" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；UQ code</text>
+<text x="55" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">机构、来源标识、种类</text>
+<text x="55" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">官方地址及许可说明</text>
+<rect x="370" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M378 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="385" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">来源快照</text>
+<text x="385" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Snapshot</text>
+<text x="385" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK source_id</text>
+<text x="385" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">范围、版本、捕获时间</text>
+<text x="385" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">相对文件、数量、状态</text>
+<rect x="700" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M708 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="715" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">原始行</text>
+<text x="715" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">StagedRecord</text>
+<text x="715" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK snapshot_id</text>
+<text x="715" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">UQ 快照 + 行序号</text>
+<text x="715" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">原始载荷、处置状态</text>
+<rect x="1030" y="125" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M1038 125h244q8 0 8 8v45h-260V133q0-8 8-8" fill="#edf5f7"/>
+<text x="1045" y="150" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">质量问题</text>
+<text x="1045" y="171" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">QualityIssue</text>
+<text x="1045" y="203" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK snapshot / record</text>
+<text x="1045" y="225" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">类型、严重性、处理状态</text>
+<text x="1045" y="247" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">处置依据、操作者、时间</text>
+<rect x="40" y="415" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 415h244q8 0 8 8v45h-260V423q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="440" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">用户</text>
+<text x="55" y="461" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">User</text>
+<text x="55" y="493" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；UQ username</text>
+<text x="55" y="515" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">密码哈希、有效状态</text>
+<text x="55" y="537" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">通过 Group 分配权限</text>
+<rect x="370" y="415" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M378 415h244q8 0 8 8v45h-260V423q0-8 8-8" fill="#edf5f7"/>
+<text x="385" y="440" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">导入批次</text>
+<text x="385" y="461" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">ImportBatch</text>
+<text x="385" y="493" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK UUID；FK snapshot / user</text>
+<text x="385" y="515" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">尝试编号、执行检查点</text>
+<text x="385" y="537" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">接受/拒绝/待核查/跳过</text>
+<rect x="700" y="415" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M708 415h244q8 0 8 8v45h-260V423q0-8 8-8" fill="#edf5f7"/>
+<text x="715" y="440" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">操作记录</text>
+<text x="715" y="461" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AuditEvent</text>
+<text x="715" y="493" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK actor</text>
+<text x="715" y="515" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">对象、操作、结果、时间</text>
+<text x="715" y="537" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">非敏感上下文；仅追加</text>
+<rect x="1030" y="415" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M1038 415h244q8 0 8 8v45h-260V423q0-8 8-8" fill="#edf5f7"/>
+<text x="1045" y="440" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">字段修正证据</text>
+<text x="1045" y="461" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">FieldChange</text>
+<text x="1045" y="493" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK event_id</text>
+<text x="1045" y="515" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">字段、前值、后值</text>
+<text x="1045" y="537" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">修正依据；仅追加</text>
+<text x="36" y="698" fill="#6a8193" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">箭头由主实体指向引用实体；1:N 表示一对多，可空外键见数据字典。</text>
+</svg>

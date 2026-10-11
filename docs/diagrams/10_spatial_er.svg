@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="1040" viewBox="0 0 1360 1040">
+<rect width="100%" height="100%" fill="white"/>
+<text x="36" y="44" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="26" font-weight="700" text-anchor="start">空间关联与观测范围 E-R 图</text>
+<text x="36" y="76" fill="#627c90" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">已实现物理关联；小时／日流量按有效时隙实时聚合，不存储陈旧汇总。</text>
+<polyline points="300,201.0 390,201.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="390.0,201.0 381.9,204.9 381.9,197.1" fill="#7892a4"/>
+<text x="345.0" y="194.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="1000,201.0 1090,201.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1090.0,201.0 1081.9,204.9 1081.9,197.1" fill="#7892a4"/>
+<text x="1045.0" y="194.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="170,475 170,350 1220,350 1220,272" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1220.0,272.0 1223.9,280.1 1216.1,280.1" fill="#7892a4"/>
+<text x="695.0" y="343.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<polyline points="520,475 520,390 1330,390 1330,272" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1330.0,272.0 1333.9,280.1 1326.1,280.1" fill="#7892a4"/>
+<text x="925.0" y="383.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<polyline points="1000,546.0 1090,546.0" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1090.0,546.0 1081.9,549.9 1081.9,542.1" fill="#7892a4"/>
+<text x="1045.0" y="539.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">1:N</text>
+<polyline points="170,617 170,700 1220,700 1220,617" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1220.0,617.0 1223.9,625.1 1216.1,625.1" fill="#7892a4"/>
+<text x="695.0" y="693.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<polyline points="870.0,617 870.0,820" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="870.0,820.0 866.1,811.9 873.9,811.9" fill="#7892a4"/>
+<text x="885.0" y="711.5" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">1:N</text>
+<polyline points="1220.0,617 1220.0,820" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1220.0,820.0 1216.1,811.9 1223.9,811.9" fill="#7892a4"/>
+<text x="1235.0" y="711.5" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">操作留痕</text>
+<polyline points="520,272 520,310 1060,310 1060,440 1220,440 1220,475" stroke="#7892a4" stroke-width="1.7" fill="none"/>
+<polygon points="1220.0,475.0 1216.1,466.9 1223.9,466.9" fill="#7892a4"/>
+<text x="790.0" y="303.0" fill="#546c80" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">0..1:N</text>
+<rect x="40" y="130" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 130h244q8 0 8 8v45h-260V138q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="155" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">目标道路网络</text>
+<text x="55" y="176" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">NetworkVersion</text>
+<text x="55" y="208" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；来源快照</text>
+<text x="55" y="230" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">归档版本与原坐标系</text>
+<text x="55" y="252" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">不同来源编号不混为主键</text>
+<rect x="390" y="130" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M398 130h244q8 0 8 8v45h-260V138q0-8 8-8" fill="#edf5f7"/>
+<text x="405" y="155" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">空间匹配批次</text>
+<text x="405" y="176" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">SpatialRun</text>
+<text x="405" y="208" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK UUID；FK network</text>
+<text x="405" y="230" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">规则、阈值、状态</text>
+<text x="405" y="252" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">分批检查点与结果计数</text>
+<rect x="740" y="130" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M748 130h244q8 0 8 8v45h-260V138q0-8 8-8" fill="#edf5f7"/>
+<text x="755" y="155" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">事故</text>
+<text x="755" y="176" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Collision</text>
+<text x="755" y="208" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；原始来源</text>
+<text x="755" y="230" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">当地日期 / UTC / 坐标</text>
+<text x="755" y="252" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">当前修订号与有效状态</text>
+<rect x="1090" y="130" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M1098 130h244q8 0 8 8v45h-260V138q0-8 8-8" fill="#edf5f7"/>
+<text x="1105" y="155" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">事故空间关联</text>
+<text x="1105" y="176" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">SpatialMatch</text>
+<text x="1105" y="208" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">FK collision / network / run</text>
+<text x="1105" y="230" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">道路或路口择一</text>
+<text x="1105" y="252" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">方法、距离、候选、输入版本</text>
+<rect x="40" y="475" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M48 475h244q8 0 8 8v45h-260V483q0-8 8-8" fill="#edf5f7"/>
+<text x="55" y="500" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">道路代表要素</text>
+<text x="55" y="521" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">RoadSegment</text>
+<text x="55" y="553" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK network / canonical</text>
+<text x="55" y="575" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">来源编号、别名、地面层级</text>
+<text x="55" y="597" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">无歧义实际机动车道路</text>
+<rect x="390" y="475" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M398 475h244q8 0 8 8v45h-260V483q0-8 8-8" fill="#edf5f7"/>
+<text x="405" y="500" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">节点 / 路口</text>
+<text x="405" y="521" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">Junction</text>
+<text x="405" y="553" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK network</text>
+<text x="405" y="575" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">路口分类可空</text>
+<text x="405" y="597" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">虚拟节点与地面连接证据</text>
+<rect x="740" y="475" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M748 475h244q8 0 8 8v45h-260V483q0-8 8-8" fill="#edf5f7"/>
+<text x="755" y="500" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">采样地点及方向</text>
+<text x="755" y="521" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">SamplingSite</text>
+<text x="755" y="553" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK request</text>
+<text x="755" y="575" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">来源道路版本与坐标</text>
+<text x="755" y="597" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">街道、方向、当前修订号</text>
+<rect x="1090" y="475" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M1098 475h244q8 0 8 8v45h-260V483q0-8 8-8" fill="#edf5f7"/>
+<text x="1105" y="500" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">采样道路关联</text>
+<text x="1105" y="521" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">SamplingRoadMatch</text>
+<text x="1105" y="553" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">FK site / road / network / run</text>
+<text x="1105" y="575" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">编号、方向、距离对照</text>
+<text x="1105" y="597" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">人工历史覆盖范围与版本</text>
+<rect x="740" y="820" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M748 820h244q8 0 8 8v45h-260V828q0-8 8-8" fill="#edf5f7"/>
+<text x="755" y="845" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">15 分钟观测</text>
+<text x="755" y="866" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">TrafficObservation</text>
+<text x="755" y="898" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">PK id；FK site / conflict</text>
+<text x="755" y="920" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">唯一有效时隙 / 排除状态</text>
+<text x="755" y="942" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">零值、缺测、冲突分开</text>
+<rect x="1090" y="820" width="260" height="142" rx="8" fill="#ffffff" stroke="#b8cbd8"/>
+<path d="M1098 820h244q8 0 8 8v45h-260V828q0-8 8-8" fill="#edf5f7"/>
+<text x="1105" y="845" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">核查与修订记录</text>
+<text x="1105" y="866" fill="#5d7e92" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">AuditEvent</text>
+<text x="1105" y="898" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">操作者、对象、理由</text>
+<text x="1105" y="920" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">FieldChange 前后值</text>
+<text x="1105" y="942" fill="#17314f" font-family="Microsoft YaHei,Arial,sans-serif" font-size="14" font-weight="400" text-anchor="start">DataRevision 修订水位</text>
+<text x="36" y="1018" fill="#6a8193" font-family="Microsoft YaHei,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">箭头由主实体指向引用实体；1:N 表示一对多，可空外键见数据字典。</text>
+</svg>

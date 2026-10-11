@@ -1,0 +1,11 @@
+erDiagram
+    User ||--o{ ImportJob : "1:N"
+    User ||--o{ SavedQuery : "1:N"
+    DataSource ||--o{ ImportJob : "1:N"
+    DataSource ||--o{ Snapshot : "1:N"
+    Snapshot o|--o{ ImportJob : "0..1:N"
+    Snapshot ||--o{ ImportBatch : "1:N"
+    ImportBatch o|--o{ ImportJob : "0..1:N"
+    User o|--o{ AuditEvent : "0..1:N"
+    AuditEvent ||--o| DataRevision : "1:0..1"
+    AuditEvent ||--o{ FieldChange : "1:N"

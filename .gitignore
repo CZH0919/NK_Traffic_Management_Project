@@ -1,0 +1,19 @@
+# Private configuration and runtime material
+.env
+.env.*
+!.env.example
+Agent_Handoff/
+Project_Progress/
+Traffic_Venv/
+.venv/
+var/
+/data/
+research/
+tmp/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.log
+*.dump
+*.pem
+*.key

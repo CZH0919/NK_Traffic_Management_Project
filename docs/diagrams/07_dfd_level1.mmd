@@ -1,0 +1,22 @@
+flowchart LR
+    P1["P1 数据接入与校验<br/>输入：官方文件和元数据<br/>输出：校验记录、批次结果<br/>失败/待核查有明确去向"]
+    D1["D1 来源证据存储<br/>Source / Snapshot / Raw<br/>Batch / QualityIssue<br/>不可变原始载荷"]
+    P2["P2 维护与关联<br/>校验来源引用、事务修正<br/>空间匹配、质量处置<br/>记录变更前后值"]
+    D2["D2 业务事实存储<br/>事故 / 车辆 / 人员<br/>道路 / 节点 / 观测<br/>当前状态与修订版本"]
+    D5["D5 权限与操作记录<br/>User / Group / Permission<br/>AuditEvent / FieldChange<br/>MaintenanceRun"]
+    P5["P5 报告与简报<br/>读取确定指标与版本<br/>API 文本生成、编辑、保存<br/>CSV / Excel / 打印"]
+    P4["P4 风险、预测与回测<br/>历史评分 / 未来外推<br/>朴素基线 / 时序回测<br/>结果及适用性说明"]
+    P3["P3 查询与聚合<br/>统一筛选、分页、空间 SQL<br/>按统计单位汇总<br/>地图/图表/明细下钻"]
+    P6["P6 账户与运行维护<br/>账户授权、配置<br/>备份、隔离恢复与核验<br/>维护结果记录"]
+    D4["D4 报告历史存储<br/>SavedQuery / Report<br/>ReportSnapshot / AIBrief<br/>AIRequest"]
+    D3["D3 规则与派生存储<br/>RuleVersion / DataRevision<br/>Risk / Forecast / Backtest<br/>AggregateCache / Anomaly"]
+    P1 -->|"来源证据"| D1
+    D1 -->|"核查资料"| P2
+    P2 -->|"实体修订"| D2
+    D2 -->|"筛选范围内数据"| P3
+    P3 -->|"时序汇总"| P4
+    P4 -->|"分析结果"| P5
+    P5 -->|"结果、文本、版本"| D4
+    P4 -->|"规则与派生结果"| D3
+    P6 -->|"账户 / 维护结果"| D5
+    D5 -->|"权限校验 / 关键日志"| P1

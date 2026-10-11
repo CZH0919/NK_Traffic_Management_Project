@@ -1,0 +1,8 @@
+{% extends 'base.html' %}{% block title %}维护核对{% endblock %}{% block breadcrumb %}运行维护 / 执行核对{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">VERIFICATION RECORD</p><h1>{{ run.get_operation_display }}</h1><p>{{ run.target_label }} · {{ run.get_status_display }}</p></div><a class="btn btn-outline-primary" href="{% url 'maintenance' %}">返回执行记录</a></div>
+{% if run.status == 'failed' %}<p class="notice notice-warning" role="alert">{{ failure }}</p>{% elif run.status == 'running' %}<p class="notice">维护尚未完成，请稍后刷新。中断后的记录需由管理员核查，不能视为恢复成功。</p>{% endif %}
+<section class="surface"><h2>执行摘要</h2><dl class="detail-grid"><div><dt>操作者</dt><dd>{{ run.actor.get_full_name|default:run.actor.username }}</dd></div><div><dt>开始时间</dt><dd>{{ run.started_at|date:'Y-m-d H:i:s' }}</dd></div><div><dt>完成时间</dt><dd>{{ run.finished_at|date:'Y-m-d H:i:s'|default:'尚未完成' }}</dd></div><div><dt>核对表数（含认证表）</dt><dd>{{ run.summary.table_count|default:'—' }}</dd></div><div><dt>文件数</dt><dd>{{ run.summary.file_count|default:'—' }}</dd></div><div><dt>耗时</dt><dd>{{ run.summary.elapsed_seconds|default:'—' }} 秒</dd></div></dl><p>{{ run.summary.scope }}</p>
+{% if run.source_run %}<p>恢复来源：<a href="{% url 'maintenance_detail' run.source_run_id %}">{{ run.source_run.started_at|date:'Y-m-d H:i' }} 的维护备份</a></p>{% endif %}
+{% if run.status == 'succeeded' %}{% if run.operation == 'restore' %}<div class="notice notice-success">数据库表数量、逐表记录数、关系约束、空间函数、代表性月度统计及文件完整性均与备份核对一致。主业务库未被覆盖。</div>{% else %}<div class="notice notice-success">数据库归档目录和文件完整性已验证。是否实际恢复成功，请另查相应隔离恢复记录。</div>{% endif %}{% endif %}</section>
+{% endblock %}

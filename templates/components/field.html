@@ -1,0 +1,4 @@
+<div class="form-field {% if field.name == 'review_note' or field.name == 'reason' %}full-width{% endif %}">
+<label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="required-mark" aria-label="必填">*</span>{% endif %}</label>
+{% if field.name == 'road' or field.name == 'junction' or field.name == 'compare_site' %}<div class="object-picker" data-object-picker="{% if field.name == 'compare_site' %}site{% else %}{{ field.name }}{% endif %}" data-endpoint="{% url 'object_search' %}"><button type="button" class="btn btn-outline-primary" data-picker-open hidden>按名称选择</button><p class="picker-selection" data-picker-selection aria-live="polite"></p><details open><summary>手动输入内部编号</summary>{{ field }}</details></div>{% else %}{{ field }}{% endif %}{% if field.help_text %}<div class="field-help">{{ field.help_text }}</div>{% endif %}
+{% if field.errors %}<div class="field-errors" role="alert">{{ field.errors }}</div>{% endif %}</div>

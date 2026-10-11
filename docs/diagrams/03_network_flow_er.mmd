@@ -1,0 +1,8 @@
+erDiagram
+    NetworkVersion ||--o{ Junction : "1:N"
+    Junction o|--o{ RoadSegment : "0..1:N × 两端"
+    NetworkVersion ||--o{ RoadSegment : "1:N"
+    SamplingRequest ||--o{ SamplingSite : "1:N"
+    SamplingSite ||--o{ TrafficObservation : "1:N"
+    SamplingSite ||--o{ FlowConflict : "1:N"
+    FlowConflict o|--o{ TrafficObservation : "0..1:N"

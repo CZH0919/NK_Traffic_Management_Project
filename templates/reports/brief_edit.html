@@ -1,0 +1,3 @@
+{% extends 'reports/layout.html' %}{% block title %}编辑分析简报{% endblock %}{% block content %}
+<div class="page-heading"><div><h1>编辑分析简报</h1><p>保存新的编辑版本，模型原文和生成时的文本保持不变。</p></div><a class="btn btn-outline-primary" href="{% url 'brief_detail' brief.pk %}">返回简报</a></div>
+<form method="post" class="surface">{% csrf_token %}{% include 'components/form_errors.html' %}{{ form.revision }}{% include 'components/field.html' with field=form.text %}<p class="section-note">请保持统计范围、单位和数据截止日期一致，并区分事实描述、解释和建议。</p><button class="btn btn-primary">保存编辑版本</button></form>{% endblock %}

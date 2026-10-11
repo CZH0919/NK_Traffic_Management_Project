@@ -1,0 +1,8 @@
+{% extends 'base.html' %}{% block title %}批次记录{% endblock %}{% block breadcrumb %}数据来源 / 批次记录{% endblock %}{% block content %}
+<div class="page-heading"><div><h1>批次记录</h1><p>查看导入任务的执行状态和数量核对结果。</p></div><a class="btn btn-outline-primary" href="{% url 'sources' %}">返回来源目录</a></div>
+<section class="surface"><h2>导入批次</h2>{% if page_obj.object_list %}
+<div class="table-responsive"><table class="table"><thead><tr><th>来源 / 范围</th><th>提交时间</th><th>状态</th><th>已处理 / 源记录</th><th>接受 / 拒绝 / 待核查</th><th>重复跳过</th></tr></thead><tbody>
+{% for batch in page_obj %}<tr><td>{{ batch.snapshot.source.name }}<br><small>{% if batch.snapshot.period_start %}{{ batch.snapshot.period_start|date:'Y-m-d' }} — {{ batch.snapshot.period_end|date:'Y-m-d' }}{% else %}{{ batch.snapshot.manifest.version|default:batch.snapshot.version }}{% endif %}</small></td><td>{{ batch.created_at|date:'Y-m-d H:i' }}<br><small>第 {{ batch.attempt }} 次执行</small></td><td>{{ batch.get_status_display }}</td><td>{{ batch.checkpoint }} / {{ batch.total_rows }}</td><td>{{ batch.accepted_rows }} / {{ batch.rejected_rows }} / {{ batch.pending_rows }}</td><td>{{ batch.skipped_rows }}</td></tr>{% endfor %}
+</tbody></table></div>{% include 'components/pagination.html' %}
+<p class="section-note">待核查包含已保留的冲突或受限观测，不纳入可靠流量统计。同一快照的重试承接已提交记录，各次执行数量不能相加。</p>
+{% else %}<div class="empty-state">{% include 'components/icon.html' with name='folder' size='large' %}<h3>尚无导入批次</h3><p>导入任务登记后，可在这里查看执行结果与待核查数量。</p></div>{% endif %}</section>{% endblock %}

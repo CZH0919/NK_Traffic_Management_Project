@@ -1,0 +1,20 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}统计预测与回测{% endblock %}{% block breadcrumb %}预测与回测 / 分析范围{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/analytics.css' %}?v={{ ui_asset_version }}"><link rel="stylesheet" href="{% static 'css/forecasting.css' %}?v={{ ui_asset_version }}">{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">TIME SERIES · HISTORICAL EVALUATION</p><h1>统计预测与回测</h1><p>从完整周期的登记数量进行外推，用历史检验方法的表现与适用边界。</p></div><a class="btn btn-outline-primary" href="{% url 'forecast_rules' %}">方法与适用条件</a></div>
+{% if not worker_online %}<div class="notice notice-warning">分析处理服务当前离线，提交后的任务将等待服务启动。</div>{% endif %}
+<form method="post" action="{% url 'forecast_create' %}" class="surface" id="forecast-form" data-preview-url="{% url 'forecast_home' %}">{% csrf_token %}{% include 'components/form_errors.html' %}
+<div class="filter-grid">
+{% include 'components/field.html' with field=form.level %}
+<div data-forecast-borough>{% include 'components/field.html' with field=form.borough %}</div>
+{% include 'components/field.html' with field=form.metric %}{% include 'components/field.html' with field=form.frequency %}
+{% include 'components/field.html' with field=form.date_from %}{% include 'components/field.html' with field=form.date_to %}{% include 'components/field.html' with field=form.horizon %}{% include 'components/field.html' with field=form.method %}
+<div data-forecast-target="road">{% include 'components/field.html' with field=form.road %}</div><div data-forecast-target="junction">{% include 'components/field.html' with field=form.junction %}</div>
+</div>
+<details class="advanced-filters"><summary>网络与规则版本</summary><div class="filter-grid">{% include 'components/field.html' with field=form.network %}{% include 'components/field.html' with field=form.rule %}</div><p class="section-note">道路／路口可按名称选择；请核对同名对象的来源编号与位置。行政区条件作用于事故事实归属，网络版本不证明历史道路始终不变。</p></details>
+<div class="form-actions"><button class="btn btn-primary">计算预测与回测</button><a class="btn btn-outline-primary" href="{% url 'forecast_home' %}">重置</a></div>
+<p class="section-note">月度最多 12 期，周度最多 26 期。自动选择只使用参数比较段，评估段保持参数固定；缺数和样本不足会显示原因。预测时点由历史范围决定，不等于电脑今天掌握的道路状态。</p>{% include 'components/save_current.html' %}</form>
+
+<section class="surface"><h2>最近计算记录</h2><div class="table-responsive"><table class="table"><thead><tr><th>对象</th><th>历史范围</th><th>指标／周期</th><th>状态</th><th>结果</th><th>提交时间（纽约）</th></tr></thead><tbody>{% for run in runs %}<tr><td><a href="{% url 'forecast_run' run.pk %}">{{ run.summary.object_label|default:run.target.get_scope_display }}</a></td><td>{{ run.date_from|date:'Y-m-d' }} — {{ run.date_to|date:'Y-m-d' }}</td><td>{{ run.get_metric_display }} / {{ run.get_frequency_display }}</td><td>{{ run.get_status_display }}</td><td>{% if run.status == 'succeeded' %}{% if run.summary.eligible %}{{ run.summary.selected.label }}{% else %}适用条件不足，保留历史{% endif %}{% else %}—{% endif %}</td><td>{{ run.created_at|date:'Y-m-d H:i' }}</td></tr>{% empty %}<tr><td colspan="6" class="table-empty">尚无计算记录。选择范围后可计算历史回测及周期外推。</td></tr>{% endfor %}</tbody></table></div><p class="section-note">显示最近 30 次；已完成结果保留独立链接，重算建立新记录。</p></section>
+{% endblock %}{% block scripts %}<script src="{% static 'js/forecasting.js' %}?v={{ ui_asset_version }}" defer></script>{% endblock %}

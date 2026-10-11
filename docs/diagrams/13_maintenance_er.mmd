@@ -1,0 +1,4 @@
+erDiagram
+    User ||--o{ MaintenanceRun : "1:N"
+    User o|--o{ AuditEvent : "0..1:N"
+    MaintenanceRun o|--o{ MaintenanceRun : "0..1:N 来源备份"

@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block title %}运行维护{% endblock %}{% block breadcrumb %}运行维护{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">BACKUP & RECOVERY</p><h1>运行维护</h1><p>核对备份范围、隔离恢复结果与操作责任人。</p></div></div>
+<section class="surface"><h2>维护方式</h2><p><a href="{% url 'help' %}#maintenance">查看维护工具使用说明</a></p><p>管理员通过本地维护工具执行备份或恢复，再在此处查看结果。恢复工具只创建新的隔离数据库和文件副本。</p><div class="notice">备份包括数据库、原始快照、上传文件、来源清单和导出附件。运行配置与凭据需单独保管，源码使用对应版本；归档可读与实际恢复通过是两项不同检查。</div></section>
+<section class="surface"><h2>执行记录</h2><div class="table-responsive"><table class="table"><thead><tr><th>操作</th><th>目标</th><th>状态</th><th>操作者</th><th>开始时间</th><th>结果</th></tr></thead><tbody>{% for item in page_obj %}<tr><td>{{ item.get_operation_display }}</td><td>{{ item.target_label }}</td><td><span class="status-pill">{{ item.get_status_display }}</span></td><td>{{ item.actor.get_full_name|default:item.actor.username }}</td><td>{{ item.started_at|date:'Y-m-d H:i' }}</td><td><a href="{% url 'maintenance_detail' item.pk %}">查看核对</a></td></tr>{% empty %}<tr><td colspan="6">尚无维护记录。执行本地维护工具后可在此查看结果。</td></tr>{% endfor %}</tbody></table></div>{% include 'components/pagination.html' %}</section>
+{% endblock %}

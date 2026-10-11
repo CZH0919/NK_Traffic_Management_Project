@@ -1,0 +1,15 @@
+{% extends 'reports/layout.html' %}{% block title %}新建分析报告{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">DEFINE THE ANALYSIS</p><h1>新建分析报告</h1><p>从当前统计范围或已完成的分析结果保存一份可追溯报告。</p></div><a class="btn btn-outline-primary" href="{% url 'reports' %}">报告列表</a></div>
+<form method="post" class="surface" id="report-form">{% csrf_token %}
+{% if error %}<p class="notice notice-warning">{{ error }}</p>{% endif %}{% include 'components/form_errors.html' %}
+{% if selected_source %}<section class="source-summary"><h2>已选分析结果</h2><p><strong>{{ selected_source.label }}</strong> · {{ selected_source.start|date:'Y-m-d' }} 至 {{ selected_source.end|date:'Y-m-d' }}</p><p>{{ selected_source.rule }} · 计算时间 {{ selected_source.created|date:'Y-m-d H:i' }}（纽约） · 记录 {{ selected_source.id }}</p></section>{% endif %}{% include 'components/field.html' with field=form.title %}<details class="advanced-filters" data-server-disclosure {% if not selected_source or error or form.errors %}open{% endif %}><summary>更换类型／来源</summary><div class="filter-grid">{% include 'components/field.html' with field=form.kind %}{% include 'components/field.html' with field=form.saved_query %}</div>
+<p class="section-note">切换类型或载入查询会更新分析范围。风险／预测报告需先完成对应计算。</p>
+{% if report_kind == 'risk' %}{% include 'components/field.html' with field=form.risk_run %}<a href="{% url 'risk_home' %}">进入历史风险计算</a>
+{% elif report_kind == 'forecast' %}{% include 'components/field.html' with field=form.forecast_run %}<a href="{% url 'forecast_home' %}">进入预测与回测</a>
+{% elif report_kind == 'flow' %}{% include 'components/field.html' with field=form.site %}
+{% endif %}
+</details>{% if source_form %}<div class="report-form-section"><h2>分析范围</h2>{{ source_form.non_field_errors }}<div class="filter-grid">{% for field in source_form %}{% if field.is_hidden %}{{ field }}{% else %}{% include 'components/field.html' %}{% endif %}{% endfor %}</div></div>{% endif %}
+<div class="form-actions"><button class="btn btn-primary">生成并保存报告</button><a class="btn btn-outline-primary" href="{% url 'saved_queries' %}">我的查询</a></div>
+{% if not worker_online %}<p class="notice notice-warning">分析服务当前离线。可提交任务，服务启动后处理。</p>{% endif %}
+</form>{% endblock %}
