@@ -1,6 +1,7 @@
 * text=auto
 *.py text eol=lf
 *.js text eol=lf
+*.mjs text eol=lf
 *.css text eol=lf
 *.html text eol=lf
 *.md text eol=lf
@@ -9,3 +10,8 @@
 *.png binary
 *.jpg binary
 *.gif binary
+*.pbf binary
+*.webp binary
+*.woff2 binary
+# Preserve official vendored asset bytes and published checksums.
+static/vendor/** -text

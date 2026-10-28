@@ -7,12 +7,15 @@ from apps.core import query_views, reference_views, maintenance_views
 from apps.accounts import maintenance as account_admin
 from apps.ingestion import quality_views, job_views
 from apps.network import views as network
+from apps.network import map_assets
 from apps.traffic import views as traffic
 from apps.analytics import views as analytics
 from apps.forecasting import views as forecasting
 from apps.reports import views as reports
 
 urlpatterns = [
+    path('map/basemap.pmtiles', map_assets.archive, name='map_archive'),
+    path('map/selection/', network.map_selection, name='map_selection'),
     path('help/', core.help_page, name='help'),
     path('objects/search/', network.object_search, name='object_search'),
     path('system/maintenance/',maintenance_views.history,name='maintenance'),

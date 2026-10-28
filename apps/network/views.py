@@ -15,7 +15,7 @@ from apps.collisions.models import Collision
 from .models import NetworkVersion,RoadSegment,Junction,SpatialMatch,SamplingRoadMatch,SpatialRun
 from .forms import CatalogFilter,MaintenanceForm,MatchForm,SpatialFilter
 from .services import CATALOG,maintain,review_match,initialize_match
-from .queries import current_network,parse_map,map_data,selected_feature
+from .queries import current_network,parse_map,map_data,selected_feature,selection_area
 
 LABELS={'road':'道路','junction':'路口','site':'采样地点'}
 
@@ -108,11 +108,29 @@ def spatial_list(request):
 
 @require_capability('analyze_data')
 def map_view(request):
-    return render(request,'network/map.html',{'boroughs':Borough.objects.all(),'networks':NetworkVersion.objects.filter(snapshot__status='published'),'current_network':current_network()})
+    from .map_assets import archive_available
+    available=archive_available()
+    basic=request.GET.get('basic')=='1' or not available
+    template='network/map_basic.html' if basic else 'network/map.html'
+    return render(request,template,{'boroughs':Borough.objects.all(),'networks':NetworkVersion.objects.filter(snapshot__status='published').order_by('-pk'),'current_network':current_network(),'basemap_available':available})
+
+@require_capability('analyze_data')
+def map_selection(request):
+    try:
+        options=parse_map(request.GET)
+        feature=selected_feature(options['selected'],options['network'])
+        return JsonResponse({'selected':feature,'nearby':selection_area(feature,options['radius'])})
+    except ValidationError as e:return JsonResponse({'error':'；'.join(e.messages)},status=400)
 
 @require_capability('analyze_data')
 def map_api(request):
-    try:return JsonResponse(map_data(parse_map(request.GET)))
+    try:
+        from time import perf_counter
+        started=perf_counter()
+        response=JsonResponse(map_data(parse_map(request.GET),use_cache=True))
+        response['Cache-Control']='no-store'
+        response['Server-Timing']=f'map;dur={(perf_counter()-started)*1000:.1f}'
+        return response
     except ValidationError as e:return JsonResponse({'error':'；'.join(e.messages)},status=400)
 
 @require_capability('analyze_data')
