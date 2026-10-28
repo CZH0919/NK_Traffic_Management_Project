@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "kind": "traffic",
+  "dataset": "7ym2-wayt",
+  "label": "nyc_2021_2025_20261004",
+  "source_url": "https://data.cityofnewyork.us/resource/7ym2-wayt.json",
+  "where": "yr = 2023",
+  "period_start": "2023-01-01",
+  "period_end": "2023-12-31",
+  "source_rows_updated": 1773980461,
+  "captured_at": "2026-10-04T13:31:40.325931+00:00",
+  "expected_rows": 85106,
+  "row_count": 85106,
+  "status": "complete",
+  "files": [
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/traffic/2023_page_0001.json.gz",
+      "rows": 50000,
+      "sha256": "55197434183b9b11f53c69c3ac352383aaaa2fbee83c16201a8085ca217ee1b7",
+      "bytes": 15376896,
+      "first_key": "row-twz9~hpr4-y8de",
+      "last_key": "row-q3zr.vaas~2bum",
+      "url": "https://data.cityofnewyork.us/resource/7ym2-wayt.json?%24select=%2A%2C+%3Aid+as+source_row_id&%24where=yr+%3D+2023&%24order=%3Aid&%24limit=50000&%24offset=0",
+      "captured_at": "2026-10-04T13:31:42.195399+00:00",
+      "elapsed_seconds": 1.86
+    },
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/traffic/2023_page_0002.json.gz",
+      "rows": 35106,
+      "sha256": "2079e6655c1445d52c65eb1dc8adaeccd5ae3664fc85ecc10b613a3efbf26bb2",
+      "bytes": 10847261,
+      "first_key": "row-6rg8_rf83.ws5a",
+      "last_key": "row-rkge_xhbu~ynk7",
+      "url": "https://data.cityofnewyork.us/resource/7ym2-wayt.json?%24select=%2A%2C+%3Aid+as+source_row_id&%24where=yr+%3D+2023&%24order=%3Aid&%24limit=50000&%24offset=50000",
+      "captured_at": "2026-10-04T13:31:47.398164+00:00",
+      "elapsed_seconds": 5.2
+    }
+  ],
+  "fields": [
+    "requestid",
+    "boro",
+    "yr",
+    "m",
+    "d",
+    "hh",
+    "mm",
+    "vol",
+    "segmentid",
+    "wktgeom",
+    "street",
+    "fromst",
+    "tost",
+    "direction"
+  ],
+  "license_url": "https://opendata.cityofnewyork.us/overview/#termsofuse",
+  "verified_at": "2026-10-04T13:31:49.497520+00:00",
+  "count_after": 85106,
+  "checksum": "29e10aaa9fd0ca1451a29567af904eae6d94f1e3bf444c33fca4532c0d2bc40b"
+}

@@ -1,19 +1,51 @@
-# Private configuration and runtime material
-.env
-.env.*
-!.env.example
-Agent_Handoff/
-Project_Progress/
-Traffic_Venv/
-.venv/
-var/
-/data/
-research/
-tmp/
+# Private configuration, credentials and local environment
+/.env
+/.env.*
+!/.env.example
+/Agent_Handoff/
+/Traffic_Venv/
+/.venv/
+/.vscode/
+*.pem
+*.key
+*密码*
+*凭据*
+*私有配置*
+
+# Runtime state and internal development evidence
+/var/
+/Project_Progress/
+/research/
+/tmp/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 *.log
 *.dump
-*.pem
-*.key
+*.tmp
+*.part
+*.lock
+
+# Fixed local collaboration entry documents, not public course deliverables
+/项目选题与功能需求设计.md
+/项目开发规划.md
+/用户体验检查与优化方案.md
+/道路地图优化开发方案.md
+/地图统一升级与研究范围边界优化方案.md
+
+# Only the reviewed official snapshot, its manifests and the reference map
+/data/*
+!/data/README.md
+!/data/raw/
+!/data/manifests/
+!/data/basemaps/
+/data/raw/*
+!/data/raw/nyc_2021_2025_20261004/
+/data/manifests/*
+!/data/manifests/nyc_2021_2025_20261004/
+/data/basemaps/*
+!/data/basemaps/README.md
+!/data/basemaps/nyc-20261027.pmtiles

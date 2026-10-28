@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "boundaries",
+  "dataset": "wh2p-dxnf",
+  "label": "nyc_2021_2025_20261004",
+  "version": "26b",
+  "source_url": "https://data.cityofnewyork.us/resource/wh2p-dxnf.json",
+  "captured_at": "2026-10-04T13:34:45.138530+00:00",
+  "status": "complete",
+  "row_count": 5,
+  "expected_rows": 5,
+  "native_crs": "EPSG:4326",
+  "files": [
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/spatial/boroughs_water_included.json.gz",
+      "rows": 5,
+      "sha256": "290ece2a73ffcb236211f87c4c8ca6284f27151c8c9b7984a79050bb8d06a272",
+      "bytes": 142617
+    }
+  ],
+  "water_areas": "included",
+  "display_boundary_file": "data/raw/nyc_2021_2025_20261004/spatial/boroughs_water_excluded.json.gz",
+  "checksum": "f1d8f5a76cbf885c421bc4c00e21e030f3aa0179aea4c9f1a8d96347057b2122"
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "kind": "nodes",
+  "dataset": "2v4z-66xt",
+  "label": "nyc_2021_2025_20261004",
+  "version": "26b",
+  "source_url": "https://data.cityofnewyork.us/api/views/2v4z-66xt/files/30298730-5064-447c-8c39-a3981409d9b3?download=true&filename=nyclion.zip",
+  "captured_at": "2026-10-04T13:34:13.119536+00:00",
+  "status": "complete",
+  "row_count": 139674,
+  "expected_rows": 139674,
+  "native_crs": "EPSG:2263",
+  "files": [
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/spatial/nodes_26b_0001.json.gz",
+      "rows": 20000,
+      "sha256": "d935aa8ad4b2e2f2490bedcb61ac4f2827a363f8fb2032f5ffa83a830b9a938f",
+      "bytes": 3195560
+    },
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/spatial/nodes_26b_0002.json.gz",
+      "rows": 20000,
+      "sha256": "ae15664dd114f0c78daa68574e63ee99a92c6ca94982e0524f5a5ac8f7299020",
+      "bytes": 3235332
+    },
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/spatial/nodes_26b_0003.json.gz",
+      "rows": 20000,
+      "sha256": "4ea3b76cff7ad0755349a8d98b206ad65165245497e45cc53cc04ec42bf16332",
+      "bytes": 3237854
+    },
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/spatial/nodes_26b_0004.json.gz",
+      "rows": 20000,
+      "sha256": "1b90d6a6f7cab83b2a4b539f13904bc9310e99181e7677b10d53ef0b7f4e333b",
+      "bytes": 3227756
+    },
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/spatial/nodes_26b_0005.json.gz",
+      "rows": 20000,
+      "sha256": "b643edf58f6a726d20b33d6659cb1f08057d3f9a41b9ba997aa28ca5f3013948",
+      "bytes": 3237097
+    },
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/spatial/nodes_26b_0006.json.gz",
+      "rows": 20000,
+      "sha256": "c3bb9c533886737d52a2df80f9c74158c460ecbfbefd48cec294a4a0be72f57d",
+      "bytes": 3321879
+    },
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/spatial/nodes_26b_0007.json.gz",
+      "rows": 19674,
+      "sha256": "95afb6bd86b5360b04184fbd3cd01ccee8620474f338f0043c1f5762793631eb",
+      "bytes": 3228701
+    }
+  ],
+  "archive_path": "data/raw/nyc_2021_2025_20261004/spatial/nyclion_26b.zip",
+  "archive_checksum": "14a2514303f0c53419cdc370bfd851db41dec038450b88b19d0897a35dad0660",
+  "fields": [
+    "NODEID",
+    "GLOBALID",
+    "VIntersect"
+  ],
+  "layer": "node",
+  "checksum": "68279b16c045e90932181da4a5efd3a711b7082b3654636f775bde71ef39ca0e"
+}

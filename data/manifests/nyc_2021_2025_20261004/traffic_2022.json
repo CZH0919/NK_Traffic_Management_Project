@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "kind": "traffic",
+  "dataset": "7ym2-wayt",
+  "label": "nyc_2021_2025_20261004",
+  "source_url": "https://data.cityofnewyork.us/resource/7ym2-wayt.json",
+  "where": "yr = 2022",
+  "period_start": "2022-01-01",
+  "period_end": "2022-12-31",
+  "source_rows_updated": 1773980461,
+  "captured_at": "2026-10-04T13:31:31.991178+00:00",
+  "expected_rows": 78652,
+  "row_count": 78652,
+  "status": "complete",
+  "files": [
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/traffic/2022_page_0001.json.gz",
+      "rows": 50000,
+      "sha256": "5d81866a447324451dd4feb22a36f42c1bad871b6b4fc9d06ca85d08524de83a",
+      "bytes": 15348233,
+      "first_key": "row-nkfs-cxns.chfx",
+      "last_key": "row-c7zr_dde9~gmyv",
+      "url": "https://data.cityofnewyork.us/resource/7ym2-wayt.json?%24select=%2A%2C+%3Aid+as+source_row_id&%24where=yr+%3D+2022&%24order=%3Aid&%24limit=50000&%24offset=0",
+      "captured_at": "2026-10-04T13:31:35.717369+00:00",
+      "elapsed_seconds": 3.72
+    },
+    {
+      "path": "data/raw/nyc_2021_2025_20261004/traffic/2022_page_0002.json.gz",
+      "rows": 28652,
+      "sha256": "2f1508d54e484d810435f401770caca8b4d3ab8d25b16c108c7bea7b665de15f",
+      "bytes": 8827732,
+      "first_key": "row-vsb7.46jf_3u4q",
+      "last_key": "row-m4h9.5uj3-a78b",
+      "url": "https://data.cityofnewyork.us/resource/7ym2-wayt.json?%24select=%2A%2C+%3Aid+as+source_row_id&%24where=yr+%3D+2022&%24order=%3Aid&%24limit=50000&%24offset=50000",
+      "captured_at": "2026-10-04T13:31:37.826362+00:00",
+      "elapsed_seconds": 2.11
+    }
+  ],
+  "fields": [
+    "requestid",
+    "boro",
+    "yr",
+    "m",
+    "d",
+    "hh",
+    "mm",
+    "vol",
+    "segmentid",
+    "wktgeom",
+    "street",
+    "fromst",
+    "tost",
+    "direction"
+  ],
+  "license_url": "https://opendata.cityofnewyork.us/overview/#termsofuse",
+  "verified_at": "2026-10-04T13:31:38.820269+00:00",
+  "count_after": 78652,
+  "checksum": "54375f7775c6d69b5bb2a3014f303af03abe542499751c8d7b06fc3e44fa6961"
+}
