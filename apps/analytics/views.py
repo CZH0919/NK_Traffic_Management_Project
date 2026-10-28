@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.core import signing
 from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
+from django.db import connection
 from django.db.models import F,Q,Min,Max
 from django.http import JsonResponse,Http404
 from django.shortcuts import render,redirect,get_object_or_404
@@ -16,6 +17,7 @@ from apps.core.permissions import require_capability
 from apps.collisions.forms import SaveQueryForm
 from apps.network.matching import rows
 from apps.network.models import SamplingRoadMatch
+from apps.network.map_cache import map_cache
 from apps.traffic.models import SamplingSite
 from .forms import make_form,RuleForm,bbox_values,DIMENSIONS
 from .models import RiskRun,RiskResult,RuleVersion
@@ -84,21 +86,27 @@ def analysis_records(request,kind):
 
 @require_capability('analyze_data')
 def analysis_map_data(request):
-    form=make_form('statistics',request.GET)
-    try:
-        if not form.is_valid():raise ValidationError('统计条件不合法。')
-        bbox=bbox_values(request.GET.get('view_bbox','-74.3,40.45,-73.65,41'))
-        zoom=int(request.GET.get('zoom',10))
-        if not 0<=zoom<=22:raise ValueError
-        where,args=scope_where(form.cleaned_data,extra_bbox=bbox);where+=' AND c.geom IS NOT NULL'
-        n=rows('SELECT count(*) n FROM collisions_collision c WHERE '+where,args)[0]['n'];cell=max(40,math.ceil(156543.033928/2**zoom*60/10)*10)
-        if n>1000 or zoom<14:
-            data=rows("SELECT count(*) n,ST_AsGeoJSON(ST_Centroid(ST_Collect(c.geom))) geometry FROM collisions_collision c WHERE "+where+' GROUP BY ST_SnapToGrid(ST_Transform(c.geom,3857),%s) ORDER BY n DESC LIMIT 1001',[*args,cell]);mode='aggregate'
-        else:
-            data=rows('SELECT c.id,c.on_street label,1 n,ST_AsGeoJSON(c.geom) geometry FROM collisions_collision c WHERE '+where+' ORDER BY c.id LIMIT 1001',args);mode='points'
-        features=[{'type':'Feature','geometry':json.loads(r.pop('geometry')),'properties':r} for r in data[:1000]]
-        return JsonResponse({'type':'FeatureCollection','features':features,'count':n,'mode':mode,'truncated':len(data)>1000})
-    except (ValidationError,ValueError):return JsonResponse({'error':'地图或统计条件不合法。'},status=400)
+    with consistent_read():
+        form=make_form('statistics',request.GET)
+        try:
+            if not form.is_valid():raise ValidationError('统计条件不合法。')
+            bbox=bbox_values(request.GET.get('view_bbox','-74.3,40.45,-73.65,41'))
+            zoom=int(request.GET.get('zoom',10))
+            if not 0<=zoom<=22:raise ValueError
+            key=('analysis-map-v1',connection.settings_dict['NAME'],digest({'conditions':form.conditions(),'bbox':bbox,'zoom':zoom,'version':data_version()}))
+            cached=map_cache.get(key)
+            if cached is not None:return JsonResponse(cached)
+            where,args=scope_where(form.cleaned_data,extra_bbox=bbox);where+=' AND c.geom IS NOT NULL'
+            n=rows('SELECT count(*) n FROM collisions_collision c WHERE '+where,args)[0]['n'];cell=max(40,math.ceil(156543.033928/2**zoom*60/10)*10)
+            if n>1000 or zoom<14:
+                data=rows("SELECT count(*) n,ST_AsGeoJSON(ST_Centroid(ST_Collect(c.geom))) geometry FROM collisions_collision c WHERE "+where+' GROUP BY ST_SnapToGrid(ST_Transform(c.geom,3857),%s) ORDER BY n DESC LIMIT 1001',[*args,cell]);mode='aggregate'
+            else:
+                data=rows('SELECT c.id,c.on_street label,1 n,ST_AsGeoJSON(c.geom) geometry FROM collisions_collision c WHERE '+where+' ORDER BY c.id LIMIT 1001',args);mode='points'
+            features=[{'type':'Feature','geometry':json.loads(r.pop('geometry')),'properties':r} for r in data[:1000]]
+            payload={'type':'FeatureCollection','features':features,'count':n,'mode':mode,'truncated':len(data)>1000}
+            map_cache.set(key,payload)
+            return JsonResponse(payload)
+        except (ValidationError,ValueError):return JsonResponse({'error':'地图或统计条件不合法。'},status=400)
 
 @require_capability('analyze_data')
 def risk_home(request):
@@ -174,21 +182,22 @@ def risk_detail(request,pk):
 
 @require_capability('analyze_data')
 def risk_map_data(request,pk):
-    run=get_object_or_404(RiskRun,pk=pk)
-    if run.status!='succeeded':return JsonResponse({'error':'计算结果尚未就绪。'},status=409)
-    try:west,south,east,north=bbox_values(request.GET.get('view_bbox','-74.3,40.45,-73.65,41'))
-    except ValidationError:return JsonResponse({'error':'地图范围不合法。'},status=400)
-    filters="run_id=%s AND point IS NOT NULL AND (point->>0)::double precision BETWEEN %s AND %s AND (point->>1)::double precision BETWEEN %s AND %s";args=[run.pk,west,east,south,north]
-    q=request.GET.get('q','').strip()[:200];grade=request.GET.get('grade','')
-    if q:filters+=' AND label ILIKE %s';args.append('%'+q.replace('\\','\\\\').replace('%','\\%').replace('_','\\_')+'%')
-    if grade in ('lower','moderate','high','very_high','insufficient'):filters+=' AND grade=%s';args.append(grade)
-    n=rows('SELECT count(*) n FROM analytics_riskresult WHERE '+filters,args)[0]['n']
-    values=rows('SELECT id,label,score,grade,point,counts->>\'n\' n FROM analytics_riskresult WHERE '+filters+' ORDER BY score DESC NULLS LAST,id LIMIT 500',args)
-    features=[]
-    for row in values:
-        point=json.loads(row.pop('point')) if isinstance(row['point'],str) else row.pop('point')
-        features.append({'type':'Feature','geometry':{'type':'Point','coordinates':point},'properties':row})
-    return JsonResponse({'type':'FeatureCollection','features':features,'count':n,'truncated':n>500,'stale':is_stale(run)})
+    with consistent_read():
+        run=get_object_or_404(RiskRun,pk=pk)
+        if run.status!='succeeded':return JsonResponse({'error':'计算结果尚未就绪。'},status=409)
+        try:west,south,east,north=bbox_values(request.GET.get('view_bbox','-74.3,40.45,-73.65,41'))
+        except ValidationError:return JsonResponse({'error':'地图范围不合法。'},status=400)
+        filters="run_id=%s AND point IS NOT NULL AND (point->>0)::double precision BETWEEN %s AND %s AND (point->>1)::double precision BETWEEN %s AND %s";args=[run.pk,west,east,south,north]
+        q=request.GET.get('q','').strip()[:200];grade=request.GET.get('grade','')
+        if q:filters+=' AND label ILIKE %s';args.append('%'+q.replace('\\','\\\\').replace('%','\\%').replace('_','\\_')+'%')
+        if grade in ('lower','moderate','high','very_high','insufficient'):filters+=' AND grade=%s';args.append(grade)
+        n=rows('SELECT count(*) n FROM analytics_riskresult WHERE '+filters,args)[0]['n']
+        values=rows('SELECT id,label,score,grade,point,counts->>\'n\' n FROM analytics_riskresult WHERE '+filters+' ORDER BY score DESC NULLS LAST,id LIMIT 500',args)
+        features=[]
+        for row in values:
+            point=json.loads(row.pop('point')) if isinstance(row['point'],str) else row.pop('point')
+            features.append({'type':'Feature','geometry':{'type':'Point','coordinates':point},'properties':row})
+        return JsonResponse({'type':'FeatureCollection','features':features,'count':n,'truncated':n>500,'stale':is_stale(run)})
 
 @require_capability('analyze_data')
 def rules(request):

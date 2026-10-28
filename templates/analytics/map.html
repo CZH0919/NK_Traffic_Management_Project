@@ -1,0 +1,25 @@
+{% load static %}
+<div class="map-workspace">
+  <div class="map-topline">
+    <div class="map-title"><strong>纽约市</strong><span class="map-mode" data-map-mode>本地详细地图</span></div>
+    <label class="map-scope-toggle"><input type="checkbox" data-map-scope checked> 研究范围</label>
+    <button type="button" class="btn btn-outline-primary btn-sm" data-map-home>回到全市</button>
+  </div>
+  <div class="map-canvas-wrap">
+    <div id="{{ map_id }}" class="analysis-map" data-analysis-map="{{ map_kind }}"
+      data-endpoint="{% if map_kind == 'statistics' %}{% url 'analysis_map_data' %}?{{ conditions }}{% else %}{% url 'risk_map_data' run.pk %}?{{ query }}{% endif %}"
+      data-borough="{% if map_kind == 'risk' %}{{ run.conditions.borough|default:'' }}{% endif %}"
+      data-boundary="{% static 'data/nyc_research_boundary.geojson' %}" data-land="{% static 'data/borough_land.geojson' %}"
+      data-archive="{% url 'map_archive' %}" data-assets="{% static 'vendor/basemap-assets/' %}"
+      aria-label="纽约市{% if map_kind == 'risk' %}历史风险结果{% else %}统计事故分布{% endif %}地图，可用方向键平移、加减键缩放"></div>
+    <div class="map-load-state" data-map-loading role="status" hidden>正在更新当前范围…</div>
+  </div>
+  {% if map_kind == 'risk' %}<div class="risk-legend"><span class="risk-grade lower">相对较低 &lt;40</span><span class="risk-grade moderate">中等 40—&lt;60</span><span class="risk-grade high">较高 60—&lt;80</span><span class="risk-grade very_high">很高 ≥80</span><span class="risk-grade insufficient">不分级</span></div>{% endif %}
+  <div class="research-legend"><span class="research-line"></span>纽约市研究范围（26b 行政边界，含水域）<span>仅作地理参照，不改变统计条件</span></div>
+  {% if map_kind == 'statistics' and form.bbox.value %}<p class="map-status-text"><span class="analysis-scope-legend"></span>紫色短虚线表示已应用的统计视野范围。</p>{% endif %}
+  <p class="map-status-text notice notice-warning" data-map-error role="alert" hidden></p>
+  <p class="map-status-text" id="{{ map_id }}-status" data-map-status role="status">地图显示已应用的条件；数据加载后可展开下方数值列表。</p>
+  <div data-map-inspector></div>
+  <div class="map-source-note"><span>参考底图 · OpenStreetMap / Protomaps · 2026-10-27 · 本地离线</span><a href="?map_mode=basic&amp;map_open=1" data-map-fallback>使用基础地图</a><button type="button" class="btn btn-outline-primary btn-sm" data-map-retry>刷新地图数据</button></div>
+</div>
+{% if map_kind == 'statistics' %}<div class="map-actions"><a id="apply-map-bounds" class="btn btn-outline-primary" href="?{{ conditions }}">按当前视野统计</a><a id="clear-map-bounds" class="btn btn-outline-primary" href="?{{ conditions }}" hidden>解除视野范围</a></div>{% endif %}
