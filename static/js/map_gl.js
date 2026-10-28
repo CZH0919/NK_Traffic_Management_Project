@@ -1,10 +1,9 @@
-import {ml,CITY,EMPTY,createMap,featureBounds} from './map_core.js?v=20261028-unified3';
-import {inspector} from './map_shared.js?v=20261028-unified3';
+import {ml,CITY,EMPTY,createMap,featureBounds} from './map_core.js?v=20261028-map-ui4';
+import {inspector} from './map_shared.js?v=20261028-map-ui4';
 
 const el = id => document.getElementById(id);
 const form = el('map-filters'), config = el('map-script').dataset;
 const state = new URLSearchParams(location.search), boxes = [...document.querySelectorAll('.map-layer-controls input')];
-const fallbackParams=new URLSearchParams(location.search);fallbackParams.set('basic','1');el('map-basic-link').href='?'+fallbackParams;
 const kinds = ['road','junction','site','collision'];
 let map, core, detail, land, latest, popup, timer, generation=0, inFlight=false, queued=null, lastRequest='', ready=false;
 let page=Number(state.get('page'))||1, pages=1, selectionTicket=0, controller, hoverTimer;
@@ -24,7 +23,7 @@ function appliedFields() {
   }
 }
 function publicParams() {
-  const p=new URLSearchParams(state); p.delete('basic'); p.delete('part'); p.delete('statistics');
+  const p=new URLSearchParams(state); p.delete('basic'); p.delete('map_mode'); p.delete('part'); p.delete('statistics');
   p.set('layers',boxes.filter(b=>b.checked).map(b=>b.value).join(','));
   const b=map.getBounds(); p.set('bbox',[b.getWest(),b.getSouth(),b.getEast(),b.getNorth()].map(x=>x.toFixed(6)).join(','));
   p.set('zoom',Math.floor(map.getZoom())); p.set('page',page); return p;
@@ -32,12 +31,12 @@ function publicParams() {
 function syncURL() {
   if(!map) return;
   const p=publicParams(); history.replaceState(null,'',`${location.pathname}?${p}`);
-  p.set('basic','1'); el('map-basic-link').href=`${location.pathname}?${p}`;
 }
-function fallback(message) {
-  el('map-loading').hidden=true; el('map-resource-error').hidden=false;el('map-resource-error').textContent=message+' 请使用“基础地图”继续查询。';
-  el('map-basic-link').classList.add('btn','btn-outline-primary','btn-sm');
+function showError(message) {
+  el('map-loading').hidden=true;el('traffic-map').setAttribute('aria-busy','false');
+  el('map-resource-error').hidden=false;el('map-resource-message').textContent=message+' 请刷新地图重试。';
 }
+el('map-retry').addEventListener('click',()=>location.reload());
 
 function addBusinessLayers() {
   const c=palette();
@@ -74,7 +73,7 @@ function setVisibility() {
 }
 function renderList(data) {
   page=data.page; pages=data.pages;
-  el('map-summary').textContent=`业务路网 ${data.network} · ${data.crash_count.toLocaleString()} 起有坐标事故`;
+  el('map-summary').textContent=`${data.network} · ${data.crash_count.toLocaleString()} 起有坐标事故`;
   el('result-count').textContent=`${data.crash_count.toLocaleString()} 条`;
   const body=el('map-results'); body.replaceChildren();
   for(const row of data.list) {
@@ -87,14 +86,14 @@ function renderList(data) {
   el('map-selection').hidden=!data.selected;
   if(data.selected) {
     const p=data.selected.properties; el('selection-link').textContent=`${p.name||'对象'} #${p.id}`; el('selection-link').href=path(p.kind,p.id);
-    el('selection-description').textContent=`列表位于所选对象 ${state.get('radius')||100} 米内，并与当前视野相交；附近不等同于已关联。`;
-  } else el('selection-description').textContent='事故列表与当前视野、日期和行政区同步；缺少坐标的事故可在事故档案中查询。';
+    el('selection-description').textContent=`当前视野与所选对象 ${state.get('radius')||100} 米周边范围内的事故。`;
+  } else el('selection-description').textContent='列表显示当前视野内符合筛选条件的事故。';
 }
 function feedback() {
   if(!latest) return;
   const zoom=Math.floor(map.getZoom());
   el('map-mode').textContent=zoom<13?'城市全览':zoom<15?'街区视图':'道路详情';
-  const mode=!visible('crashes')?'事故图层已隐藏；列表及总数保持不变。':latest.crash_mode==='aggregate'?'事故按网格聚合；点击查看准确数量与放大入口。k 表示千；也可展开地图数据。':'事故逐点显示；点击可查看档案与附近事故。';
+  const mode=!visible('crashes')?'事故图层已隐藏；列表及总数保持不变。':latest.crash_mode==='aggregate'?'点击聚合标记查看事故数量或放大。k 表示千。':'事故逐点显示；点击可查看档案与附近事故。';
   const notes=[mode,...latest.notices];
   if(visible('sites')&&zoom<12) notes.push('采样地点在进一步放大后显示。');
   if(visible('junctions')&&zoom<15) notes.push('路口在道路详情级别显示。');
@@ -149,7 +148,7 @@ async function select(kind,id,initial=false) {
 function showPopup(feature,coordinates) {
   popup?.remove(); const p=feature.properties, box=node('div',''); box.className='map-popup';
   if(!p.id) {
-    node('strong',Number(p.count).toLocaleString()+' 起事故',box);node('small','当前网格内的事故数量，不是风险评分。',box);
+    node('strong',Number(p.count).toLocaleString()+' 起事故',box);node('small','当前区域内的事故数量。',box);
     if(map.getZoom()<18.9){const button=node('button','放大此处',box);button.type='button';button.className='btn btn-outline-primary btn-sm';button.onclick=()=>{popup?.remove();map.easeTo({center:coordinates,zoom:Math.min(map.getZoom()+2,19),duration:reduced?0:250});};}else node('small','已达最大缩放级别。可缩短日期范围，或从下方列表查看事故档案。',box);
   } else {
     const kind={'business-roads':'road','business-junctions':'junction','business-sites':'site','business-crash-points':'collision'}[feature.layer.id];
@@ -161,7 +160,7 @@ function showPopup(feature,coordinates) {
 }
 
 async function start() {
-  core=createMap(el('traffic-map'),config,{onStyle:()=>{addBusinessLayers();el('map-loading').hidden=true;},onFailure:fallback,onTheme:()=>popup?.remove(),scopeVisible:state.get('map_scope')!=='0'});
+  core=createMap(el('traffic-map'),config,{onStyle:()=>{addBusinessLayers();el('map-loading').hidden=true;},onFailure:showError,onTheme:()=>popup?.remove(),scopeVisible:state.get('map_scope')!=='0'});
   map=core.map;
   const scope=el('map-scope');scope.checked=state.get('map_scope')!=='0';
   scope.addEventListener('change',()=>{state.set('map_scope',scope.checked?'1':'0');core.setScopeVisible(scope.checked);syncURL();});
@@ -210,4 +209,4 @@ async function start() {
   addEventListener('pagehide',event=>{controller?.abort();clearTimeout(timer);queued=null;if(!event.persisted){clearTimeout(hoverTimer);core.destroy();}});
   addEventListener('pageshow',event=>{if(event.persisted)schedule('full',true,false);});
 }
-start().catch(error=>{console.error('地图初始化失败',error);fallback('当前浏览器无法打开详细地图。');});
+start().catch(error=>{console.error('地图初始化失败',error);showError('地图暂时无法显示。');});

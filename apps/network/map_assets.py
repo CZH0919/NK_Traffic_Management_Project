@@ -37,7 +37,7 @@ def archive(request):
     try:
         stat = path.stat()
     except OSError:
-        return HttpResponse('参考底图尚未安装，可以使用基础地图。', status=404)
+        return HttpResponse('地图资源暂不可用，请联系管理员。', status=404)
     size = stat.st_size
     etag = f'"{stat.st_mtime_ns:x}-{size:x}"'
     headers = {'Accept-Ranges': 'bytes', 'ETag': etag,

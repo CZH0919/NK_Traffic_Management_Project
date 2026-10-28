@@ -30,7 +30,7 @@
 {% endif %}<a href="{% url 'help' %}" {% if current_page == 'help' %}aria-current="page"{% endif %}>{% include 'components/icon.html' with name='document' %}<span>使用指南</span></a>
   </nav>
   <button class="nav-close" id="nav-close" type="button">{% include 'components/icon.html' with name='chevron' %}收起导航</button>
-  <div class="sidebar-foot">{% include 'components/icon.html' with name='folder' %}<span>本地数据工作空间</span></div>
+  <div class="sidebar-foot">{% include 'components/icon.html' with name='folder' %}<span>纽约市道路交通分析</span></div>
 </aside>
 <div class="workspace"><header class="topbar"><div class="topbar-start"><button class="menu-toggle" id="menu-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="展开导航">{% include 'components/icon.html' with name='menu' %}</button><span>{% block breadcrumb %}{{ breadcrumb_label }}{% endblock %}</span></div><div class="topbar-user">{% include 'components/theme_toggle.html' %}<a class="help-link" href="{% url 'help' %}">使用指南</a>{% if user.is_authenticated %}{% include 'components/icon.html' with name='person' %}<span>{{ user.get_full_name|default:user.username }}</span><form action="{% url 'logout' %}" method="post">{% csrf_token %}<button class="btn btn-outline-primary btn-sm" type="submit">退出</button></form>{% else %}<a class="btn btn-outline-primary btn-sm" href="{% url 'login' %}">登录</a>{% endif %}</div></header>
 <main id="main" class="content" tabindex="-1">

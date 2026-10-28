@@ -109,11 +109,7 @@ def spatial_list(request):
 
 @require_capability('analyze_data')
 def map_view(request):
-    from .map_assets import archive_available
-    available=archive_available()
-    basic=request.GET.get('basic')=='1' or not available
-    template='network/map_basic.html' if basic else 'network/map.html'
-    return render(request,template,{'boroughs':Borough.objects.all(),'networks':NetworkVersion.objects.filter(snapshot__status='published').order_by('-pk'),'current_network':current_network(),'basemap_available':available})
+    return render(request,'network/map.html',{'boroughs':Borough.objects.all(),'networks':NetworkVersion.objects.filter(snapshot__status='published').order_by('-pk'),'current_network':current_network()})
 
 @require_capability('analyze_data')
 def map_selection(request):

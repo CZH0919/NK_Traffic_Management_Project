@@ -151,15 +151,19 @@ class MapUpgradeTests(TestCase):
                 self.assertEqual(self.client.post('/map/basemap.pmtiles').status_code,405)
                 self.client.logout();self.assertEqual(self.client.get('/map/basemap.pmtiles').status_code,302)
 
-    def test_missing_archive_uses_basic_map_and_explicit_fallback(self):
+    def test_map_always_uses_detailed_renderer_even_for_legacy_links(self):
         with tempfile.TemporaryDirectory() as folder:
             path=Path(folder)/'missing.pmtiles'
             with override_settings(MAP_ARCHIVE=path):
-                response=self.client.get('/map/')
-                self.assertTemplateUsed(response,'network/map_basic.html')
-                self.assertContains(response,'参考底图尚未安装')
+                for query in ('', '?basic=1', '?map_mode=basic&borough=1'):
+                    response=self.client.get('/map/'+query)
+                    self.assertTemplateUsed(response,'network/map.html')
+                    self.assertContains(response,'js/map_gl.js')
+                    self.assertNotContains(response,'使用基础地图')
+                    self.assertNotContains(response,'参考底图 ·')
+                    self.assertNotContains(response,'vendor/leaflet')
                 self.assertEqual(self.client.get('/map/basemap.pmtiles').status_code,404)
             path.write_bytes(b'PMTiles\x03')
             with override_settings(MAP_ARCHIVE=path):
                 self.assertTemplateUsed(self.client.get('/map/'),'network/map.html')
-                self.assertTemplateUsed(self.client.get('/map/?basic=1'),'network/map_basic.html')
+                self.assertTemplateUsed(self.client.get('/map/?basic=1'),'network/map.html')

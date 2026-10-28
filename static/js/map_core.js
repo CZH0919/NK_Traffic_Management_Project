@@ -1,5 +1,5 @@
 import * as ml from '../vendor/maplibre/maplibre-gl.mjs';
-import {CITY,REGION,EMPTY,dark,reduced,boundaryData} from './map_shared.js?v=20261028-unified3';
+import {CITY,REGION,EMPTY,dark,reduced,boundaryData} from './map_shared.js?v=20261028-map-ui4';
 export {ml,CITY,REGION,EMPTY};
 let protocol;
 
@@ -36,7 +36,7 @@ function style(config) {
   return {version:8, glyphs:new URL(config.assets+'fonts/{fontstack}/{range}.pbf',location.origin).href.replaceAll('%7B','{').replaceAll('%7D','}'),
     sprite:new URL(config.assets+'sprites/v4/'+(night?'dark':'light'),location.origin).href,
     sources:{reference:{type:'vector',url:'pmtiles://'+new URL(config.archive,location.origin).href,
-      attribution:'© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> · <a href="https://protomaps.com" target="_blank" rel="noopener">Protomaps</a> · NYC Open Data'}}, layers};
+      attribution:'© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> · <a href="https://protomaps.com" target="_blank" rel="noopener">Protomaps</a> · NYC Open Data'}}, layers};
 }
 
 
@@ -72,8 +72,8 @@ export function createMap(node,config,{onStyle=()=>{},onFailure=()=>{},onTheme=(
   map.on('dataloading',()=>node.setAttribute('aria-busy','true'));
   map.on('idle',()=>node.setAttribute('aria-busy','false'));
   const boundaryReady=boundaryData(config.boundary).then(data=>{boundary=data;installBoundary();return data;}).catch(()=>{fail('研究范围边界未能加载。');return null;});
-  map.on('error',()=>fail('详细底图未能完整加载。'));
-  map.getCanvas().addEventListener('webglcontextlost',()=>fail('地图绘图环境暂不可用。'));
+  map.on('error',()=>fail('地图未能完整加载。'));
+  map.getCanvas().addEventListener('webglcontextlost',()=>fail('地图显示已中断。'));
   function changeTheme(){if(disposed)return;if(!node.clientWidth||!node.clientHeight){themePending=true;return;}themePending=false;node.setAttribute('aria-busy','true');onTheme();styleReady=false;map.setStyle(style(config));}
   document.addEventListener('traffic:themechange',changeTheme);
   let width=node.clientWidth,height=node.clientHeight;

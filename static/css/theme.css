@@ -55,11 +55,8 @@
   [data-theme=dark] .contribution span{background:#387e81}[data-theme=dark] .contribution b{color:#f0f7fa}
   [data-theme=dark] .series-dot.a{background:#61c9c1}[data-theme=dark] .series-dot.b{background:#e4a268}
   [data-theme=dark] .map-topline,[data-theme=dark] .map-legend{color:#b7cbd6;border-color:var(--line)}
-  [data-theme=dark] :is(.traffic-map,.analysis-map,.leaflet-container){background:#142b3b;border-color:var(--line)}
-  [data-theme=dark] :is(.leaflet-popup-content-wrapper,.leaflet-popup-tip,.leaflet-tooltip,.leaflet-bar a,.leaflet-control-attribution){background:var(--raised);color:var(--ink);border-color:#607a8b}
-  [data-theme=dark] .leaflet-bar a:hover{background:#2e5061}[data-theme=dark] .leaflet-container a.leaflet-popup-close-button{color:#c6d8e2}[data-theme=dark] .leaflet-control-attribution a{color:#9ee6df}
+  [data-theme=dark] :is(.traffic-map,.analysis-map){background:#142b3b;border-color:var(--line)}
   [data-theme=dark] .legend-road{border-color:#869eac}[data-theme=dark] .legend-junction{border-color:#a3bfd5;background:#142a37}[data-theme=dark] .legend-site{background:#61c9c1;border-color:#142a37;outline-color:#61c9c1}[data-theme=dark] .legend-crash{background:#e4a268}
-  [data-theme=dark] .crash-cluster{background:#9b5c2bee;border-color:#f0c4a0;color:#fff8f0}[data-theme=dark] .count-symbol{background:#245f77ee;border-color:#9dc8d4;color:#fff}
   [data-theme=dark] .report-figure{border-color:var(--line)}[data-theme=dark] .report-figure svg>rect[fill="#fff"]{fill:var(--surface)}[data-theme=dark] .report-figure svg text{fill:#bccfdc}[data-theme=dark] .report-figure svg line[stroke="#e0e9ed"]{stroke:#3b5362}
   [data-theme=dark] .report-figure svg [fill="#087f83"]{fill:#61c9c1}[data-theme=dark] .report-figure svg [stroke="#087f83"]{stroke:#61c9c1}[data-theme=dark] .report-figure svg [fill="#a66a32"]{fill:#e4a268}[data-theme=dark] .report-figure svg [stroke="#a66a32"]{stroke:#e4a268}
   [data-theme=dark] .report-figure svg [fill="#75899b"]{fill:#acbed1}[data-theme=dark] .report-figure svg [stroke="#75899b"]{stroke:#acbed1}

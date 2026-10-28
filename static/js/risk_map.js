@@ -1,4 +1,4 @@
-import {elem} from './map_shared.js?v=20261028-unified3';
+import {elem} from './map_shared.js?v=20261028-map-ui4';
 export const GRADES={lower:'相对较低',moderate:'中等',high:'较高',very_high:'很高',insufficient:'不分级'};
 const COLORS={lower:'#4a7d96',moderate:'#b19a60',high:'#b97743',very_high:'#ad4d45',insufficient:'#8897a2'};
 const NIGHT={lower:'#92b6cd',moderate:'#d4b875',high:'#dfa16d',very_high:'#e6887b',insufficient:'#a5b5c0'};
