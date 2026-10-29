@@ -8,6 +8,8 @@ from .models import CollisionFactor,VehicleFactor,PersonFactor,VehicleDamage
 from apps.core.models import Borough
 
 def style_fields(form):
+    from apps.core.form_presentation import configure_fields
+    configure_fields(form.fields)
     for f in form.fields.values():
         if isinstance(f.widget,forms.HiddenInput): continue
         f.widget.attrs['class']='form-select' if isinstance(f.widget,forms.Select) else 'form-check-input' if isinstance(f.widget,forms.CheckboxInput) else 'form-control'
@@ -57,6 +59,14 @@ class EntityForm(forms.Form):
                     for f in VehicleDamage.objects.filter(vehicle=instance): self.initial[f'damage_{f.source_slot}']=f.description
         self.fields['reason']=forms.CharField(label='操作依据',min_length=5,max_length=1000,widget=forms.Textarea,help_text='说明来源、核查依据或维护原因；将与前后变化一并留存。')
         style_fields(self)
+        for name in ('collision','vehicle'):
+            if name in self.fields:
+                self.fields[name].label = '所属事故' if name == 'collision' else '所属车辆'
+                self.fields[name].help_text = ('按日期、街道或来源编号查找事故；留空表示暂未关联。' if name == 'collision'
+                    else '选择事故后，车辆候选限定在该事故内；没有明确关联时可留空。')
+        for name in ('vehicle_type','person_type','injury'):
+            if name in self.fields:
+                self.fields[name].help_text = '可选择常见来源值，也可填写其他原始值；建议旁的中文仅作说明。'
 
     def clean(self):
         data=super().clean()

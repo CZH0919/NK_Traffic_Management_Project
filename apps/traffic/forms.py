@@ -15,7 +15,7 @@ class FlowQuery(StyledForm):
     start=forms.DateField(label='开始日期',widget=forms.DateInput(attrs={'type':'date'}))
     end=forms.DateField(label='结束日期',widget=forms.DateInput(attrs={'type':'date'}))
     grain=forms.ChoiceField(label='统计粒度',choices=[('day','每日'),('hour','每小时'),('quarter','每 15 分钟')])
-    compare_site=forms.IntegerField(label='比较地点（默认本地点）',required=False,min_value=1)
+    compare_site=forms.IntegerField(label='比较地点',required=False,min_value=1,help_text='留空使用当前地点。选择其他地点时仍需核对方向和采样范围。')
     compare_start=forms.DateField(label='比较期间起日（留空不比较）',required=False,widget=forms.DateInput(attrs={'type':'date'}))
 
 class ObservationTimeFilter(StyledForm):

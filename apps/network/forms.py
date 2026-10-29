@@ -5,6 +5,8 @@ from .models import NetworkVersion
 class StyledForm(forms.Form):
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
+        from apps.core.form_presentation import configure_fields
+        configure_fields(self.fields)
         for field in self.fields.values():
             field.widget.attrs.setdefault('class','form-check-input' if isinstance(field.widget,forms.CheckboxInput) else 'form-select' if isinstance(field.widget,forms.Select) else 'form-control')
             if isinstance(field.widget,forms.DateInput):field.widget.format='%Y-%m-%d'
@@ -35,6 +37,12 @@ class MatchForm(StyledForm):
     exposure_start=forms.DateField(label='已核实历史覆盖起日（仅采样地点）',required=False,widget=forms.DateInput(attrs={'type':'date'}))
     exposure_end=forms.DateField(label='已核实历史覆盖止日（仅采样地点）',required=False,widget=forms.DateInput(attrs={'type':'date'}))
     reason=forms.CharField(label='核查依据',min_length=5,max_length=1000,widget=forms.Textarea(attrs={'rows':3}))
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs)
+        values=self.data if self.is_bound else self.initial
+        confirming=values.get('action','confirm')=='confirm'
+        self.fields['target_id'].required=confirming
+        self.fields['target_kind'].required=confirming
 
 class SpatialFilter(StyledForm):
     kind=forms.ChoiceField(label='对象类型',choices=[('collision','事故'),('site','采样地点')],required=False)

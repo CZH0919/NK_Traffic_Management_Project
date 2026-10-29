@@ -1,1 +1,1 @@
-{% if form.non_field_errors %}<div class="notice notice-error" role="alert">{{ form.non_field_errors }}</div>{% endif %}
+{% if form.errors %}<div class="notice notice-error form-error-summary" role="alert" tabindex="-1"><strong>请检查以下内容，已填写的信息仍保留。</strong>{{ form.non_field_errors }}<ul>{% for field in form %}{% if field.errors and not field.is_hidden %}<li><a href="#{{ field.id_for_label }}">{{ field.label }}：{{ field.errors|striptags }}</a></li>{% endif %}{% endfor %}</ul></div>{% endif %}

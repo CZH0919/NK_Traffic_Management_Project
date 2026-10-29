@@ -82,7 +82,7 @@ def summarize(site,start,end,grain='day'):
             total=sum(x['total'] for x in rows_) if rows_ and all(x['complete'] for x in rows_) else None,
             observed_sum=sum(x['observed_sum'] or 0 for x in rows_) if any(x['valid'] for x in rows_) else None,
             complete_days=sum(x['complete'] for x in rows_)))
-    return {'series':aggregate_slots(slots,grain),'coverage':coverage,'peaks':peaks,
+    return {'series':aggregate_slots(slots,grain),'coverage':coverage,'peaks':peaks,'daily_coverage':overall,
         'grain':grain,'start':start.isoformat(),'end':end.isoformat(),'site':site.pk,'direction':site.direction}
 
 def compare(site,other,start,end,other_start):

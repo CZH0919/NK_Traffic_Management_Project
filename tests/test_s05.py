@@ -159,7 +159,7 @@ class AnalyticsTests(TestCase):
     def test_stale_result_stops_current_support_drill(self):
         events=self.matched_events(5);run=self.risk();result=run.results.get()
         save_entity(kind='crashes',pk=events[0].pk,actor=self.editor,expected_revision=1,data={'review_note':'已复核来源记录。'},reason=REASON)
-        self.assertTrue(is_stale(run));response=self.client.get(f'/risk/results/{result.pk}/');self.assertContains(response,'停止把当前明细当作旧分子的证据')
+        self.assertTrue(is_stale(run));response=self.client.get(f'/risk/results/{result.pk}/');self.assertContains(response,'当前明细与原有结果可能不一致')
         self.assertNotContains(response,'查看同口径全部记录')
     def test_async_claim_failure_rollback_and_recovery(self):
         self.matched_events(5);run=enqueue(self.analyst,self.form('risk',level='road'));self.assertEqual(claim(),run.pk)

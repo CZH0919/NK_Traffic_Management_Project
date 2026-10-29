@@ -14,7 +14,7 @@ from apps.collisions.forms import style_fields
 from apps.collisions.views import history
 from apps.core.permissions import require_capability
 from apps.core.services import audit_changes, clean_reason, maintenance_lock, require_actor, ConcurrentChange
-from .models import QualityIssue, DataSource, StagedRecord
+from .models import QualityIssue, DataSource, StagedRecord, Snapshot
 from .pipeline import ENTITY
 
 QUALITY_LABELS={
@@ -29,7 +29,7 @@ QUALITY_LABELS={
     'non_quarter_hour_sampling':'非整刻钟采样','missing_volume':'流量值缺失或不合法',
     'invalid_site_key':'采样位置标识不合法','official_location_notice':'来源已公告位置问题',
     'missing_source_key':'来源主键缺失','duplicate_source_key':'重复来源主键',
-    'source_record_conflict':'同一来源编号的内容冲突','changed_source_record':'同一来源编号的内容变化','changed_source_key':'同一来源编号的内容变化',
+    'source_record_conflict':'同一来源编号的内容冲突','changed_source_record':'来源记录发生内容变化','changed_source_key':'同一来源编号对应不同内容',
     'flow_not_statistically_usable':'流量观测受限','reported_borough_geometry_mismatch':'报告行政区与坐标不一致',
 }
 
@@ -39,6 +39,7 @@ class QualityFilter(forms.Form):
     code=forms.CharField(label='问题类型',required=False,max_length=60,widget=forms.Select(choices=[('','全部类型')]+list(QUALITY_LABELS.items())))
     severity=forms.ChoiceField(label='严重程度',required=False,choices=[('','全部')]+QualityIssue._meta.get_field('severity').choices)
     record_id=forms.IntegerField(label='原始记录编号',required=False,min_value=1)
+    snapshot=forms.ModelChoiceField(queryset=Snapshot.objects.all(),required=False,widget=forms.HiddenInput)
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
         code=self.data.get('code','')
@@ -74,21 +75,22 @@ def quality_list(request):
     form=QualityFilter(request.GET); valid=form.is_valid(); qs=QualityIssue.objects.select_related('snapshot__source')
     if valid:
         data=form.cleaned_data
-        for key in ('status','code','severity','record_id'):
+        for key in ('code','severity','record_id','snapshot'):
             if data.get(key): qs=qs.filter(**{key:data[key]})
         if data.get('source'): qs=qs.filter(snapshot__source=data['source'])
     else: qs=qs.none()
+    totals=dict(qs.values_list('status').annotate(n=Count('id')))
+    if valid and data.get('status'):qs=qs.filter(status=data['status'])
     page=Paginator(qs.order_by('-id'),40).get_page(request.GET.get('page'))
     for row in page: row.label=QUALITY_LABELS.get(row.code,row.code)
     params=request.GET.copy(); params.pop('page',None)
-    totals=dict(QualityIssue.objects.values_list('status').annotate(n=Count('id')))
     return render(request,'ingestion/quality_list.html',{'form':form,'page_obj':page,'querystring':params.urlencode(),
-        'totals':totals,'codes':QUALITY_LABELS.items()},status=200 if valid else 400)
+        'totals':totals,'codes':QUALITY_LABELS.items(),'file_scope':form.cleaned_data.get('snapshot') if valid else None},status=200 if valid else 400)
 
 @require_capability('analyze_data')
-def quality_detail(request,pk):
+def quality_detail(request,pk,review_form=None,response_status=200):
     issue=get_object_or_404(QualityIssue.objects.select_related('snapshot__source','record','resolved_by'),pk=pk)
-    form=ReviewForm(initial={'revision':issue.revision}) if request.user.has_perm('core.maintain_data') else None
+    form=review_form if review_form is not None else ReviewForm(initial={'revision':issue.revision}) if request.user.has_perm('core.maintain_data') else None
     kind=issue.snapshot.source.kind; model=ENTITY.get(kind); obj=None
     if model and kind in ('crashes','vehicles','persons','traffic') and issue.record_id:
         obj=model.objects.filter(raw_record_id=issue.record_id).first()
@@ -96,10 +98,12 @@ def quality_detail(request,pk):
     members=[]
     if kind=='traffic' and obj and obj.conflict_id:
         members=obj.conflict.trafficobservation_set.select_related('raw_record__snapshot').order_by('id')
+    from .quality_evidence import evidence
     return render(request,'ingestion/quality_detail.html',{'issue':issue,'label':QUALITY_LABELS.get(issue.code,issue.code),
         'form':form,'entity':obj,'kind':kind,'members':members,'history':history('quality',pk),
+        'evidence':evidence(issue,obj,check_position=request.GET.get('check_position')=='1'),
         'raw_json':json.dumps(issue.record.payload,ensure_ascii=False,indent=2) if issue.record else '',
-        'details_json':json.dumps(issue.details,ensure_ascii=False,indent=2)})
+        'details_json':json.dumps(issue.details,ensure_ascii=False,indent=2)},status=response_status)
 
 @require_POST
 @require_capability('maintain_data')
@@ -110,8 +114,8 @@ def quality_review(request,pk):
         review_issues(request.user,{pk:form.cleaned_data['revision']},form.cleaned_data['status'],form.cleaned_data['reason'])
         messages.success(request,'核查结论已记录，原始数据和统计限制保持独立管理。'); return redirect(detail_url(request,'quality_detail',pk=pk))
     except ValidationError as exc:
-        from django.urls import reverse
-        return render(request,'core/action_error.html',{'error':'；'.join(exc.messages),'back_url':reverse('quality_detail',args=[pk])},status=409 if isinstance(exc,ConcurrentChange) else 400)
+        form.add_error(None,exc)
+        return quality_detail(request,pk,review_form=form,response_status=409 if isinstance(exc,ConcurrentChange) else 400)
 
 @require_POST
 @require_capability('maintain_data')

@@ -17,8 +17,8 @@ from .tables import table_payload
 LABELS={'date_from':'历史起日','date_to':'历史止日','borough':'行政区编号','network':'网络版本编号','dimension':'统计维度','metric':'指标','year':'限定年份','month':'限定月份','weekday':'星期','hour':'当地小时','severity':'伤亡情况','road':'道路编号','junction':'路口编号','compare_from':'B 期间起日','compare_to':'B 期间止日','compare_borough':'B 行政区编号','rule':'规则编号','frequency':'周期','horizon':'外推期数','method':'方法','start':'观察起日','end':'观察止日','grain':'汇总粒度','site':'采样地点编号','compare_start':'B 观察起日','compare_site':'B 采样地点编号','bbox':'地理筛选范围'}
 VALUE_LABELS={'crashes':'事故数','injured':'已报告受伤人数','killed':'已报告死亡人数','month':'月','week':'周','day':'日','hour':'小时','quarter':'15 分钟','auto':'比较段自动选择','naive':'上一期','seasonal':'季节滞后','ma':'移动平均','ses':'指数平滑'}
 BASE_NOTES=['事故按纽约当地日期统计；官方发布记录不代表现实中的全部事故。',
-            '已报告伤亡合计与完整伤亡总量不同，缺失不补零；事故、车辆与人员分别计数。',
-            '报告保存生成时的确定结果。来源修订后旧报告保持原值，不能当作实时数据。']
+            '伤亡人数合计仅包含已报告数；缺失单独列示。事故、车辆与人员使用各自的统计单位。',
+            '本报告保留生成时的数据范围和版本。']
 
 
 def allow(actor):
@@ -54,6 +54,21 @@ def describe(conditions):
             network=NetworkVersion.objects.filter(pk=v).first()
             value=network.label if network else value
             label='道路网络版本'
+        if k=='rule':
+            from apps.analytics.models import RuleVersion
+            rule=RuleVersion.objects.filter(pk=v).first() if str(v).isdigit() else None
+            label='分析规则';value=str(rule) if rule else f'规则 {v}'
+        if k in ('road','junction','site','compare_site'):
+            from apps.network.models import RoadSegment, Junction
+            model={'road':RoadSegment,'junction':Junction,'site':SamplingSite,'compare_site':SamplingSite}[k]
+            obj=model.objects.filter(pk=v).first() if str(v).isdigit() else None
+            label={'road':'道路','junction':'路口','site':'采样地点','compare_site':'比较地点'}[k]
+            if obj:value=(obj.display_name or getattr(obj,'name','') or getattr(obj,'street',''))+f'（#{obj.pk}）'
+        if k=='dimension':
+            from apps.analytics.forms import DIMENSIONS
+            value=dict(DIMENSIONS).get(str(v),value)
+        if k=='metric' and v=='records':value='车辆记录数' if conditions.get('dimension')=='vehicle_type' else '人员记录数'
+        if k=='method' and v=='auto':value='根据较早历史选择方法'
         if k=='level':
             label='分析层级';value={'city':'全市','borough':'行政区','road':'道路','junction':'路口'}.get(str(v),str(v))
         output.append({'label':label,'value':value})
@@ -92,7 +107,7 @@ def enqueue(actor,main,source):
 
 def current_payload(report):
     kind=report.kind
-    payload={'schema_version':1,'metrics':[],'tables':[],'charts':[],'notes':list(BASE_NOTES),'scope':describe(report.conditions)}
+    payload={'schema_version':1,'presentation_version':'20261029','metrics':[],'tables':[],'charts':[],'notes':list(BASE_NOTES),'scope':describe(report.conditions)}
     version=data_version()
     if kind in ('statistics','comparison'):
         form=make_form(kind,report.conditions)
@@ -127,14 +142,14 @@ def current_payload(report):
         payload['metrics']=[metric('objects','分析对象',qs.count(),'个'),metric('graded','可以分级',graded.count(),'个'),metric('ungraded','不满足分级条件',qs.filter(score__isnull=True).count(),'个')]
         top=list(graded.order_by('-score','pk').values('label','score')[:12])
         payload['charts'].append(dict(kind='bar',title='历史强度评分较高的对象',unit='分',labels=[r['label'] for r in top],series=[dict(name='历史强度分',values=[r['score'] for r in top])],note=f'图示前 {len(top)} 个可评分对象；同分可能并列。分数不代表未来事故概率，未分级对象不等于低风险。'))
-        payload['notes'] += ['历史强度在同层级／同期间参照中归一化；参照、权重和门槛随规则保存。','流量暴露量必须单独验证，历史强度分不当作单位流量事故率。']
+        payload['notes'] += ['历史强度分比较同类对象在同一期间的相对位置，组成和权重见分析规则。','该分数不表示未来事故概率；观测期间事故率需另行核对双向流量和实际观测范围。']
     elif kind=='forecast':
         run=report.forecast_run
         if run.status!='succeeded':raise ValidationError('预测结果未完成。')
         version=run.data_version;summary=run.summary
         unit='起' if run.metric=='crashes' else '人'
         payload.update(analysis_at=run.finished_at,rule={'code':run.rule.code,'version':run.rule.version,'name':run.rule.name,'parameters':run.rule.parameters,'definition':run.rule.definition},analysis=summary)
-        payload['metrics']=[metric('history','连续完整历史',summary['usable_periods'],'期'),metric('mae','全部可评估步长 MAE',summary.get('selected_mae'),unit),metric('naive_mae','上一期基线 MAE',summary.get('naive_mae'),unit)]
+        payload['metrics']=[metric('history','连续完整历史',summary['usable_periods'],'期'),metric('mae','平均绝对误差（全部已评估提前期）',summary.get('selected_mae'),unit),metric('naive_mae','上一期值基线的平均绝对误差',summary.get('naive_mae'),unit)]
         payload['tables'].append(table_payload('history','完整历史与部分周期',[('start','周期起日'),('end','周期止日'),('value','建模值'),('reported','已登记／报告部分'),('n','支撑事故'),('covered_days','已覆盖天数'),('days','所选天数'),('reason','限制')],run.history))
         comparisons=[dict(method=row['label'],selected=row['selected'],step=x['step'],n=x['n'],mae=x['mae'],rmse=x['rmse']) for row in summary.get('comparisons',[]) for x in row['by_step']]
         payload['tables'].append(table_payload('methods','各方法逐步长误差',[('method','方法'),('selected','所选方法'),('step','提前期数'),('n','样本数'),('mae','MAE'),('rmse','RMSE')],comparisons))
@@ -147,7 +162,10 @@ def current_payload(report):
             if last:predicted[last['start']]=last['value']
         payload['charts'].append(dict(kind='line',title='已观测历史与周期数量外推',unit=unit,labels=labels,series=[dict(name='完整历史',values=[actual.get(k) for k in labels]),dict(name='周期外推',values=[predicted.get(k) for k in labels])],lower=[points[k].lower if k in points else None for k in labels],upper=[points[k].upper if k in points else None for k in labels],note='完整历史实线、外推虚线、浅色为经验误差参考带；缺失断开。日期为周期起日，完整截止 '+str(run.training_end or '无')+'。'))
         payload['notes'] += summary.get('reasons',[])
-        payload['notes'] += [summary['definition'],summary['interval_note'],'参数比较后固定参数，各步长误差需分别判断；多步平均较小不保证单步占优。']
+        payload['notes'] += ['预测根据截止日期之前的完整历史估计后续周期数量。',
+                            '平均绝对误差表示历史预测平均与实际数量相差多少；不同提前期需分别阅读。',
+                            summary['interval_note'], '所选方法与上一期值基线使用相同评估样本；所有提前期的平均表现不能代替某一个提前期的表现。']
+        payload['method_notes']=[summary['definition']]
     else:
         from .forms import prepare_forms
         main,form=prepare_forms(report.owner,{**report.conditions,'kind':'flow'})
@@ -171,7 +189,8 @@ def current_payload(report):
             payload['metrics'] += [metric('exposure_volume','已核验共同有效时隙双向流量',e['volume'],'辆次'),metric('exposure_collisions','同范围事故',e['collisions'],'起'),metric('exposure_rate','流量归一化事故率',e['rate_per_million'],'起／百万辆次')]
         payload['analysis']=data
         payload['notes']=['纽约当地观测时隙，夏令时歧义和重复小时分别处理。','部分流量、缺测、冲突与真实零不同；地点和方向不可任意互换。']+payload['exposure']['reasons']+payload['notes']
-    payload['notes']=list(dict.fromkeys(payload['notes']))
+    from apps.core.templatetags.ux_values import reason_text
+    payload['notes']=list(dict.fromkeys(reason_text(text) for text in payload['notes']))
     payload['sources']=source_metadata(version)
     domain='traffic' if kind=='flow' else 'crashes'
     payload['data_through']=max((s['data_through'] for s in payload['sources'] if s['kind']==domain and s['data_through']),default=None)

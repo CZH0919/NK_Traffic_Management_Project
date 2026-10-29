@@ -38,21 +38,27 @@ class ReportForm(StyledForm):
     def __init__(self,*args,actor,**kwargs):
         super().__init__(*args,**kwargs)
         self.fields['saved_query'].queryset=SavedQuery.objects.filter(owner=actor,is_active=True,kind__in=['statistics','comparison','risk','forecast'])
+        values=self.data if self.is_bound else self.initial
+        kind=values.get('kind','statistics')
+        for name, required_kind in [('risk_run','risk'),('forecast_run','forecast'),('site','flow')]:
+            self.fields[name].required=kind==required_kind
+        self.fields['title'].help_text=f'留空自动命名为“{dict(KINDS).get(kind,"分析")}报告”。'
 
     def clean(self):
         d=super().clean()
         for kind,key in [('risk','risk_run'),('forecast','forecast_run'),('flow','site')]:
-            if d.get('kind')==kind and not d.get(key):self.add_error(key,'请选择对应的已完成计算或采样地点。')
+            if d.get('kind')==kind and not d.get(key) and key not in self.errors:
+                self.add_error(key, '请选择采样地点。' if kind=='flow' else '请选择一项已完成的计算。')
         return d
 
 
-def prepare_forms(actor, data, load_saved=False):
+def prepare_forms(actor, data, load_saved=False, preview=False):
     values=data.dict() if hasattr(data,'dict') else dict(data)
     values.setdefault('kind','statistics')
     if load_saved and values.get('saved_query'):
         saved=SavedQuery.objects.filter(pk=values['saved_query'],owner=actor,is_active=True,kind__in=['statistics','comparison','risk','forecast']).first() if str(values['saved_query']).isdigit() else None
         if not saved:raise ValidationError('个人查询不存在或不可访问。')
-        values.update(saved.conditions,kind=saved.kind,title=saved.name)
+        values.update(saved.conditions,kind=saved.kind,title=values.get('title') or saved.name)
         if saved.kind in ('risk','forecast'):
             model=RiskRun if saved.kind=='risk' else ForecastRun
             run=model.objects.filter(conditions=saved.conditions,status='succeeded').first()
@@ -67,6 +73,18 @@ def prepare_forms(actor, data, load_saved=False):
         limits=bounds(site) if site else {'first':None,'last':None}
         initial={'start':limits['first'],'end':min(limits['last'],limits['first']+timedelta(days=6)) if limits['first'] else None,'grain':'day'}
         source=FlowQuery({**initial,**values})
+        if site:
+            source.fields['compare_site'].picker_empty=f'使用当前地点：{site.display_name or site.street} · {site.direction}'
+            source.fields['start'].help_text=f'来源观测范围：{limits["first"] or "未提供"} 至 {limits["last"] or "未提供"}；其中可能存在缺测。'
+        elif preview: source=None
+    if preview:
+        main=ReportForm(actor=actor,initial=values)
+        if source is not None:
+            old=source
+            source=type(source)(initial=dict(old.data))
+            for key in source.fields:
+                source.fields[key].help_text=old.fields[key].help_text
+                if hasattr(old.fields[key],'picker_empty'):source.fields[key].picker_empty=old.fields[key].picker_empty
     return main,source
 
 

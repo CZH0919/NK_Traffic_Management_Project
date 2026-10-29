@@ -12,8 +12,18 @@ from .models import AuditEvent, DataRevision
 from .permissions import require_capability
 
 
-def help_page(request):
-    return render(request, 'core/help.html')
+def help_page(request, topic=None):
+    from django.http import Http404
+    from .help_content import available_topics, search_topics, ALIASES
+    topics = available_topics(request.user)
+    selected = next((item for item in topics if item['slug'] == topic), None)
+    if topic and selected is None:
+        raise Http404
+    query = request.GET.get('q', '').strip()[:100]
+    return render(request, 'core/help.html', {'topics': topics, 'topic': selected,
+                  'help_query': query, 'help_results': search_topics(topics, query),
+                  'help_aliases': {key: '/help/' + value + '/' if value else '/help/'
+                                   for key, value in ALIASES.items() if not value or any(t['slug'] == value for t in topics)}})
 
 def label_events(events):
     for event in events:

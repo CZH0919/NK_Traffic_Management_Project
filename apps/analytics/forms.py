@@ -37,6 +37,7 @@ class ConditionForm(StyledForm):
         return result
 
 class AnalysisForm(ConditionForm):
+    metric_dimensions_enabled = True
     road=forms.IntegerField(label='道路',min_value=1,required=False)
     junction=forms.IntegerField(label='路口',min_value=1,required=False)
     year=forms.IntegerField(label='限定年份',min_value=2,max_value=9998,required=False)
@@ -47,6 +48,24 @@ class AnalysisForm(ConditionForm):
     dimension=forms.ChoiceField(label='统计维度',choices=DIMENSIONS,required=False)
     metric=forms.ChoiceField(label='事故维度指标',choices=METRICS,required=False)
     bbox=forms.CharField(required=False,max_length=160,widget=forms.HiddenInput)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        values = self.data if self.is_bound else self.initial
+        dimension = values.get('dimension') or 'month'
+        requested = values.get('metric') or 'crashes'
+        fixed = {'vehicle_type':('records','涉事车辆记录数'), 'person_type':('records','涉事人员记录数'),
+                 'injury':('records','涉事人员记录数'), 'factor':('crashes','涉及事故数')}.get(dimension) if self.metric_dimensions_enabled else None
+        effective = fixed[0] if fixed else 'crashes' if requested == 'records' else requested
+        self.metric_adjusted = bool(values.get('metric') and requested != effective)
+        self.fields['metric'].label = '统计指标'
+        self.fields['metric'].choices = [fixed] if fixed else METRICS[:3]
+        self.fields['metric'].fixed_label = fixed[1] if fixed else ''
+        if requested in dict(METRICS):
+            if self.is_bound:
+                self.data = self.data.copy()
+                self.data['metric'] = effective
+            else: self.initial['metric'] = effective
+        if fixed: self.fields['metric'].help_text = '此维度按明细条数统计。' if fixed[0] == 'records' else '每起事故按所涉及因素计数。'
     def clean(self):
         d=super().clean()
         if d.get('road') and d.get('junction'):raise forms.ValidationError('道路和路口应分别查询。')
@@ -62,6 +81,7 @@ class AnalysisForm(ConditionForm):
         return d
 
 class CompareForm(AnalysisForm):
+    metric_dimensions_enabled = False
     compare_from=forms.DateField(label='B 期间起始',widget=forms.DateInput(attrs={'type':'date'}))
     compare_to=forms.DateField(label='B 期间截止',widget=forms.DateInput(attrs={'type':'date'}))
     compare_borough=forms.ModelChoiceField(label='B 行政区',queryset=Borough.objects.all(),required=False,empty_label='全市（含归属未知）')

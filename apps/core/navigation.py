@@ -4,7 +4,7 @@ from django.urls import Resolver404, resolve, reverse
 
 LISTS = {
     'entity_list': {'date_from','date_to','borough','origin','active','source_id','q','category','sort','severity','vehicle_type','person_type','position','collision_id','vehicle_id','type','injury','age_min','age_max','page'},
-    'quality_list': {'status','source','code','severity','record_id','page'},
+    'quality_list': {'status','source','code','severity','record_id','snapshot','page'},
     'network_catalog': {'network','state','q','borough','page'},
     'traffic_sites': {'q','borough','direction','request','road','inactive','page'},
     'analysis_records': {'date_from','date_to','borough','network','road','junction','year','month','weekday','hour','severity','dimension','metric','bbox','bucket_dimension','bucket_key','page'},

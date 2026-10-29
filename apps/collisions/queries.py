@@ -38,6 +38,12 @@ class QueryForm(forms.Form):
                 self.fields['age_max']=forms.IntegerField(label='最大年龄',required=False,min_value=0,max_value=130)
         self.fields['sort'].choices=([('date_desc','日期：新到旧'),('date_asc','日期：旧到新')] if kind=='crashes' else [])+[('id_desc','编号：大到小'),('id_asc','编号：小到大')]
         style_fields(self)
+        from apps.core.form_presentation import SUGGESTIONS
+        from apps.core.help_content import FIELD_HELP
+        if kind == 'crashes': self.fields['q'].help_text = FIELD_HELP['street']
+        elif 'type' in self.fields:
+            self.fields['type'].suggestions = SUGGESTIONS['vehicle_type' if kind == 'vehicles' else 'person_type']
+            self.fields['type'].help_text = FIELD_HELP['category']
 
     def clean(self):
         d=super().clean()
@@ -59,12 +65,11 @@ class QueryForm(forms.Form):
         return result
 
 def published_records(qs,origin):
-    # Official rows have non-null raw-record FKs. Excluding unpublished evidence
-    # is equivalent to joining every fact to its published snapshot, but avoids
-    # expanding millions of already-published rows. Keep this in one SQL snapshot.
-    unpublished=StagedRecord.objects.filter(pk=OuterRef('raw_record_id')).exclude(snapshot__status='published')
-    if origin=='official':return qs.filter(~Exists(unpublished))
-    if origin=='all':return qs.filter(~Q(origin='official')|~Exists(unpublished))
+    # Evaluate unpublished evidence once in the same SQL snapshot. PKs are never
+    # NULL; Django's exclusion preserves a nullable raw FK as the former NOT EXISTS did.
+    unpublished=StagedRecord.objects.exclude(snapshot__status='published').values('pk')
+    if origin=='official':return qs.exclude(raw_record_id__in=unpublished)
+    if origin=='all':return qs.filter(~Q(origin='official')|~Q(raw_record_id__in=unpublished))
     return qs
 
 

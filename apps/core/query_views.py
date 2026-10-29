@@ -53,7 +53,8 @@ def query_destination(kind):
 def saved_queries(request):
     archived=request.GET.get('deleted')=='1'
     records=SavedQuery.objects.filter(owner=request.user,is_active=not archived)
-    return render(request,'core/saved_queries.html',{'queries':records,'archived':archived})
+    from .query_presentation import attach_summaries
+    return render(request,'core/saved_queries.html',{'queries':attach_summaries(records),'archived':archived})
 
 @require_POST
 @require_capability('analyze_data')
@@ -107,4 +108,8 @@ def update_query(request,pk):
         record_event(actor=request.user,action='query_deleted' if action=='delete' else 'query_saved',object_type='saved_query',object_id=saved.pk)
         messages.success(request,'个人查询已更新。')
         return redirect('saved_queries')
-    except ValidationError as e: return render(request,'core/action_error.html',{'error':'；'.join(e.messages),'back_url':reverse('saved_queries')},status=400)
+    except ValidationError as e:
+        from .query_presentation import attach_summaries
+        records=SavedQuery.objects.filter(owner=request.user,is_active=saved.is_active)
+        return render(request,'core/saved_queries.html',{'queries':attach_summaries(records),'archived':not saved.is_active,
+                      'rename_id':saved.pk,'rename_value':request.POST.get('name',saved.name),'rename_error':'；'.join(e.messages)},status=400)

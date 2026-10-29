@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse, Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.decorators.http import require_POST
@@ -43,10 +43,25 @@ def job_upload(request):
             job=submit_upload(request.user,form.cleaned_data['source'],form.cleaned_data['file'])
             messages.success(request,'文件已保留，后台校验任务已排队。校验完成后需要提交导入。'); return redirect('job_detail',pk=job.pk)
         except UploadError as exc: form.add_error('file',ERRORS[exc.code])
-    schemas={str(source.pk):{'label':source.name, 'fields':', '.join(sorted(REQUIRED[source.kind]))}
+    from .file_formats import fields_for
+    schemas={str(source.pk):{'label':source.name, 'fields':', '.join(sorted(REQUIRED[source.kind])),
+                            'rows':fields_for(source.kind), 'headers_url':reverse('import_headers',args=[source.kind])}
              for source in form.fields['source'].queryset}
     return render(request,'ingestion/upload.html',{'form':form,'worker_online':worker_online(),'upload_schemas':schemas,
         'schema':[(SOURCE_LABELS.get(kind,kind),', '.join(sorted(fields))) for kind,fields in REQUIRED.items()]})
+
+
+@require_capability('maintain_data')
+def import_headers(request, kind):
+    if kind not in REQUIRED: raise Http404
+    import csv
+    from io import StringIO
+    from .file_formats import fields_for
+    output=StringIO(newline='')
+    csv.writer(output).writerow([row['key'] for row in fields_for(kind)])
+    response=HttpResponse('\ufeff'+output.getvalue(),content_type='text/csv; charset=utf-8')
+    response['Content-Disposition']=f'attachment; filename="{kind}-field-headers.csv"'
+    return response
 
 @require_capability('view_batches')
 def job_detail(request,pk):

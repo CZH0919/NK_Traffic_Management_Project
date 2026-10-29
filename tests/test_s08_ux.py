@@ -51,7 +51,9 @@ class UsabilityTests(TestCase):
         self.assertContains(response,'查询与地图')
         admin=User.objects.create_user('ux-admin'); admin.groups.add(Group.objects.get(name='系统管理员'))
         self.client.force_login(admin)
-        self.assertContains(self.client.get('/help/'),'scripts/maintain_local.py')
+        self.assertContains(self.client.get('/help/'),'/help/maintenance/')
+        self.assertNotContains(self.client.get('/help/'),'scripts/maintain_local.py')
+        self.assertContains(self.client.get('/help/maintenance/'),'scripts/maintain_local.py')
 
     def test_return_context_survives_detail_cancel_and_edit_save(self):
         self.client.force_login(self.editor)
@@ -168,7 +170,7 @@ class UsabilityTests(TestCase):
         self.assertEqual(response.status_code,200)
         self.assertContains(response,'已选分析结果')
         self.assertTrue(response.context['selected_source'])
-        self.assertEqual(response.context['form'].data['forecast_run'],str(run.pk))
+        self.assertEqual(response.context['form']['forecast_run'].value(),str(run.pk))
         result=self.client.post('/reports/new/',{'kind':'forecast','forecast_run':str(run.pk),'title':'保留选定来源'})
         self.assertEqual(result.status_code,302)
         from apps.reports.models import Report

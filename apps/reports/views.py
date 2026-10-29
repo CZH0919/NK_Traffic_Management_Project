@@ -50,23 +50,28 @@ def home(request):
 @access
 def new(request):
     error='';code=200
-    try:main,source=prepare_forms(request.user,request.POST if request.method=='POST' else request.GET,load_saved=request.method=='GET')
+    try:main,source=prepare_forms(request.user,request.POST if request.method=='POST' else request.GET,load_saved=request.method=='GET',preview=request.method=='GET')
     except ValidationError as e:
         return render(request,'core/action_error.html',{'error':'；'.join(e.messages),'back_url':reverse('reports')},status=400)
     if request.method=='POST':
         try:return redirect('report_detail',pk=services.enqueue(request.user,main,source).pk)
         except ValidationError as e:error='；'.join(e.messages);code=400
-    kind=main.data.get('kind','statistics')
+    values=main.data if main.is_bound else main.initial
+    kind=values.get('kind','statistics')
     selected_source=None
-    if kind in ('risk','forecast') and main.is_valid():
-        run=main.cleaned_data.get(kind+'_run')
+    if kind in ('risk','forecast'):
+        try:run=main.fields[kind+'_run'].clean(values.get(kind+'_run')) if values.get(kind+'_run') else None
+        except ValidationError:run=None
         if run:
             fallback_label=run.get_level_display() if kind=='risk' else run.target.get_scope_display()
             selected_source={'label':run.summary.get('object_label',fallback_label),
                              'start':run.date_from, 'end':run.date_to, 'id':str(run.pk)[:8],
                              'rule':run.rule, 'created':run.finished_at}
+            if kind=='forecast':
+                selected_source['label'] += f' · {run.get_metric_display()} · {run.get_frequency_display()}度 · 预测 {run.horizon} 期'
     return render(request,'reports/new.html',{'form':main,'source_form':source,'report_kind':kind,'error':error,
-             'selected_source':selected_source,'worker_online':online()},status=code)
+             'selected_source':selected_source,'worker_online':online(),
+             'advanced_fields':('network','road','junction','year','month','weekday','hour','severity','compare_site','compare_start')},status=code)
 
 
 def preferred_brief(briefs):
@@ -150,7 +155,10 @@ def export_new(request):
     if request.method=='POST':
         try:return redirect('export_detail',pk=exports.enqueue(request.user,kind,values.get('format','csv'),form=form).pk)
         except ValidationError as e:error='；'.join(e.messages);code=400
-    return render(request,'reports/export_new.html',{'form':form,'export_kind':kind,'formats':[('csv','CSV 数据包（ZIP）'),('xlsx','Excel 工作簿')],
+    common=('date_from','date_to','borough','site','origin','active')
+    return render(request,'reports/export_new.html',{'form':form,'export_kind':kind,
+         'common_fields':[field for field in form if field.name in common], 'advanced_fields':[field for field in form if field.name not in common],
+         'formats':[('csv','CSV 数据包（ZIP）'),('xlsx','Excel 工作簿')],
          'format':values.get('format','csv'),'export_kinds':[(k,v) for k,v in exports.KINDS.items() if k!='report'],'error':error,'worker_online':online()},status=code)
 
 

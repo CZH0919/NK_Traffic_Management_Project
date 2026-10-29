@@ -5,7 +5,7 @@ from apps.analytics.models import RuleVersion, LEVELS
 from apps.analytics.query import coverage_intervals
 from apps.network.models import RoadSegment, Junction
 
-METHODS = [('auto', '按参数比较段自动选择'), ('naive', '上一期值基线'), ('seasonal', '季节滞后基线'), ('ma', '移动平均'), ('ses', '简单指数平滑')]
+METHODS = [('auto', '自动选择（根据较早历史）'), ('naive', '上一期值基线'), ('seasonal', '季节滞后基线'), ('ma', '移动平均'), ('ses', '简单指数平滑')]
 METRICS = [('crashes', '事故数'), ('injured', '已报告受伤人数'), ('killed', '已报告死亡人数')]
 
 
@@ -19,6 +19,17 @@ class ForecastForm(ConditionForm):
     horizon = forms.IntegerField(label='外推周期数', min_value=1, max_value=26)
     method = forms.ChoiceField(label='预测方法', choices=METHODS)
     rule = forms.ModelChoiceField(label='方法规则版本', queryset=RuleVersion.objects.filter(code='count-forecast'))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        values = self.data if self.is_bound else self.initial
+        self.fields['borough'].empty_label = '请选择行政区'
+        monthly = values.get('frequency', 'month') == 'month'
+        self.fields['horizon'].widget.attrs['max'] = 12 if monthly else 26
+        self.fields['horizon'].help_text = '月度最多 12 期，周度最多 26 期；提前一期分别表示一个月或一周。'
+        level = values.get('level', 'city')
+        for name in ('borough', 'road', 'junction'):
+            self.fields[name].required = level == name
 
     def clean(self):
         d = super().clean()

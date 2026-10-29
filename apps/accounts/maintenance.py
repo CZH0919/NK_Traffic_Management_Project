@@ -29,11 +29,19 @@ class AccountForm(forms.Form):
     version=forms.CharField(required=False,widget=forms.HiddenInput)
     def __init__(self,*args,account=None,**kwargs):
         self.account=account
-        initial={}
+        initial={'role':'分析用户'}
         if account:
             initial=account_state(account); initial['role']=initial['roles'][0] if initial['roles'] else '分析用户'
             initial['version']=signing.dumps({'id':account.pk,'state':account_state(account)},salt='account-edit')
-        super().__init__(*args,initial=initial,**kwargs); style_fields(self)
+        super().__init__(*args,initial=initial,**kwargs)
+        self.fields['role'].help_text='分析用户：查询与分析；数据维护人员：另可维护和导入；管理员：另可管理账户、规则和运行维护。'
+        if not account:
+            self.fields['password'].required = self.fields['password_confirm'].required = True
+            from django.contrib.auth.password_validation import password_validators_help_texts
+            self.fields['password'].help_text = ' '.join(password_validators_help_texts())
+        else:
+            self.fields['password'].help_text='留空保留当前密码；填写时须同时确认新密码。'
+        style_fields(self)
     def clean(self):
         data=super().clean(); password=data.get('password','')
         if not self.account and not password: self.add_error('password','新增账户必须设置密码。')
@@ -92,4 +100,4 @@ def account_edit(request,pk=None):
             messages.success(request,'账户已保存。停用账户会失去后续请求的访问权限。'); return redirect('accounts')
         except ValidationError as exc: form.add_error(None,exc)
     return render(request,'core/maintenance_form.html',{'form':form,'title':'维护账户' if pk else '新增账户',
-        'back_url':'accounts','explanation':'角色权限在服务端执行。停用保留历史操作记录；启用即可恢复访问。'})
+        'back_url':'accounts','explanation':'设置账户的访问角色和登录状态。停用账户后，原有操作记录仍可查阅。'})

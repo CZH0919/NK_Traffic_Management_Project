@@ -24,6 +24,9 @@ LABELS={'road':'道路','junction':'路口','site':'采样地点'}
 def object_search(request):
     """Name search for form pickers, with the same eligible network scope as analysis."""
     kind = request.GET.get('kind')
+    if kind in ('collision', 'vehicle', 'risk_run', 'forecast_run'):
+        from apps.core.object_lookup import lookup
+        return lookup(request)
     if kind not in CATALOG:
         return JsonResponse({'error':'请选择道路、路口或采样地点。'}, status=400)
     try:
@@ -186,6 +189,10 @@ def match_detail(request,kind,pk):
     initial={'revision':match.revision,'input_revision':obj.revision,'target_kind':'junction' if kind=='collision' and match.junction_id else 'road',
         'target_id':match.junction_id if kind=='collision' and match.junction_id else match.road_id}
     form=MatchForm(request.POST or None,initial=initial);status=200
+    from apps.core.form_presentation import picker
+    picker_kind=request.POST.get('target_kind',initial['target_kind']) if request.method=='POST' else initial['target_kind']
+    picker(form.fields['target_id'], picker_kind if picker_kind in ('road','junction') else initial['target_kind'])
+    form.fields['target_id'].label='目标对象'
     if kind=='collision':form.fields.pop('exposure_start');form.fields.pop('exposure_end')
     else:form.fields['target_kind'].choices=[('road','道路')]
     if request.method=='POST':

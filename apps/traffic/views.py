@@ -30,6 +30,8 @@ def flow(request,pk):
     initial={'start':limits['first'],'end':min(limits['last'],limits['first']+timedelta(days=6)) if limits['first'] else None,'grain':'day'}
     query={**initial,**request.GET.dict()} if request.GET else initial
     form=FlowQuery(query);data=None;comparison=None;exposure_data=None;status=200
+    from apps.core.templatetags.ux_values import source_label
+    form.fields['compare_site'].picker_empty=f'使用当前地点：{site.display_name or site.street} · {source_label(site.direction)}'
     net=current_network();match=SamplingRoadMatch.objects.filter(site=site,network=net).select_related('road').first()
     if limits['first'] and form.is_valid():
         f=form.cleaned_data

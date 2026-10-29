@@ -1,5 +1,5 @@
 {% load static %}<!doctype html>
-<html lang="zh-CN"><head><script src="{% static 'js/theme.js' %}?v={{ ui_asset_version|default:'20261011-theme1' }}"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{% block title %}工作台{% endblock %} · 城市交通研究</title><link rel="icon" href="{% static 'img/logo.svg' %}" type="image/svg+xml"><link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.min.css' %}"><link rel="stylesheet" href="{% static 'css/app.css' %}?v={{ ui_asset_version }}"><link rel="stylesheet" href="{% static 'css/workspace.css' %}?v={{ ui_asset_version }}"><link rel="stylesheet" href="{% static 'css/usability.css' %}?v={{ ui_asset_version }}">{% block extra_css %}{% endblock %}<link rel="stylesheet" href="{% static 'css/theme.css' %}?v={{ ui_asset_version|default:'20261011-theme1' }}"></head>
+<html lang="zh-CN"><head><script src="{% static 'js/theme.js' %}?v={{ ui_asset_version|default:'20261011-theme1' }}"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{% block title %}工作台{% endblock %} · 城市交通研究</title><link rel="icon" href="{% static 'img/logo.svg' %}" type="image/svg+xml"><link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.min.css' %}"><link rel="stylesheet" href="{% static 'css/app.css' %}?v={{ ui_asset_version }}"><link rel="stylesheet" href="{% static 'css/workspace.css' %}?v={{ ui_asset_version }}"><link rel="stylesheet" href="{% static 'css/usability.css' %}?v={{ ui_asset_version }}">{% block extra_css %}{% endblock %}<link rel="stylesheet" href="{% static 'css/theme.css' %}?v={{ ui_asset_version|default:'20261011-theme1' }}"><link rel="stylesheet" href="{% static 'css/product.css' %}?v={{ ui_asset_version }}"></head>
 <body><a href="#main" class="skip-link">跳转到主要内容</a>
 <div class="nav-shade" id="nav-shade" hidden></div>
 <aside class="sidebar" id="sidebar" aria-label="主要导航">
@@ -27,7 +27,7 @@
     {% if perms.core.manage_users %}<a href="{% url 'accounts' %}" {% if current_page == 'accounts' or current_page == 'account_edit' or current_page == 'account_create' %}aria-current="page"{% endif %}>{% include 'components/icon.html' with name='users' %}<span>账户管理</span></a>{% endif %}
     <a href="{% url 'access' %}" {% if current_page == 'access' or current_page == 'password_change' %}aria-current="page"{% endif %}>{% include 'components/icon.html' with name='users' %}<span>账户与权限</span></a>
     {% if perms.core.view_audit %}<a href="{% url 'audit' %}" {% if current_page == 'audit' %}aria-current="page"{% endif %}>{% include 'components/icon.html' with name='document' %}<span>操作记录</span></a>{% endif %}
-{% endif %}<a href="{% url 'help' %}" {% if current_page == 'help' %}aria-current="page"{% endif %}>{% include 'components/icon.html' with name='document' %}<span>使用指南</span></a>
+{% endif %}<a href="{% url 'help' %}" {% if is_help %}aria-current="page"{% endif %}>{% include 'components/icon.html' with name='document' %}<span>使用指南</span></a>
   </nav>
   <button class="nav-close" id="nav-close" type="button">{% include 'components/icon.html' with name='chevron' %}收起导航</button>
   <div class="sidebar-foot">{% include 'components/icon.html' with name='folder' %}<span>纽约市道路交通分析</span></div>
@@ -36,7 +36,7 @@
 <main id="main" class="content" tabindex="-1">
 {% if isolated_copy %}<div class="notice notice-warning" role="status">隔离数据副本 · 此处修改和新增文件与主业务数据分开保存。</div>{% endif %}
 {% if messages %}<div aria-live="polite">{% for message in messages %}<div class="notice notice-success">{{ message }}</div>{% endfor %}</div>{% endif %}
-{% if user.is_authenticated and current_page != 'help' %}<div class="context-help"><a href="{% url 'help' %}#{{ help_anchor }}">本页操作指南</a></div>{% endif %}
+{% if user.is_authenticated and not is_help %}<div class="context-help"><a href="{{ help_url }}" target="_blank" rel="noopener">本页操作指南（新窗口）</a></div>{% endif %}
 {% block content %}{% endblock %}
 <footer class="page-footer">统计时间以纽约当地时间为准。</footer></main></div>
-<script src="{% static 'vendor/bootstrap/bootstrap.bundle.min.js' %}" defer></script><script src="{% static 'js/app.js' %}?v={{ ui_asset_version }}" defer></script><script src="{% static 'js/operations.js' %}?v={{ ui_asset_version }}" defer></script><script src="{% static 'js/usability.js' %}?v={{ ui_asset_version }}" defer></script>{% block scripts %}{% endblock %}</body></html>
+<script src="{% static 'vendor/bootstrap/bootstrap.bundle.min.js' %}" defer></script><script src="{% static 'js/app.js' %}?v={{ ui_asset_version }}" defer></script><script src="{% static 'js/operations.js' %}?v={{ ui_asset_version }}" defer></script><script src="{% static 'js/usability.js' %}?v={{ ui_asset_version }}" defer></script><script src="{% static 'js/product.js' %}?v={{ ui_asset_version }}" defer></script>{% block scripts %}{% endblock %}</body></html>

@@ -1,17 +1,32 @@
 (() => {
   'use strict';
   document.querySelectorAll('[data-print]').forEach(button => button.addEventListener('click', () => window.print()));
+  let printDetails;
+  addEventListener('beforeprint',()=>{printDetails=[...document.querySelectorAll('.report-document details')].map(node=>[node,node.open]);printDetails.forEach(([node])=>{node.open=true;});});
+  addEventListener('afterprint',()=>printDetails?.forEach(([node,open])=>{node.open=open;}));
   const report = document.getElementById('report-form');
+  function preserve(form, changed, value) {
+    const data=new FormData(form), params=new URLSearchParams();
+    const common=['title','date_from','date_to','borough','network','start','end','grain','format'];
+    for(const key of common){const item=data.get(key);if(item)params.set(key,item);}
+    params.set(changed,value);
+    if(changed!=='kind' && changed!=='saved_query')params.set('kind',data.get('kind'));
+    if(changed==='kind'){
+      if(value==='flow'){if(!params.has('start')&&params.has('date_from'))params.set('start',params.get('date_from'));if(!params.has('end')&&params.has('date_to'))params.set('end',params.get('date_to'));}
+      else {if(!params.has('date_from')&&params.has('start'))params.set('date_from',params.get('start'));if(!params.has('date_to')&&params.has('end'))params.set('date_to',params.get('end'));}
+    }
+    location.assign('?'+params);
+  }
   if (report) {
-    report.querySelector('[name=kind]').addEventListener('change', event => { location.assign('?kind=' + encodeURIComponent(event.target.value)); });
+    report.querySelector('[name=kind]').addEventListener('change', event => preserve(report,'kind',event.target.value));
     report.querySelector('[name=saved_query]').addEventListener('change', event => {
-      if (event.target.value) location.assign('?saved_query=' + encodeURIComponent(event.target.value));
+      if (event.target.value) preserve(report,'saved_query',event.target.value);
     });
     const site = report.querySelector('[name=site]');
-    if (site) site.addEventListener('change', () => { location.assign('?kind=flow&site=' + encodeURIComponent(site.value)); });
+    if (site) site.addEventListener('change', () => preserve(report,'site',site.value));
   }
   const exportKind = document.getElementById('export-kind');
-  if (exportKind) exportKind.addEventListener('change', () => { location.assign('?kind=' + encodeURIComponent(exportKind.value)); });
+  if (exportKind) exportKind.addEventListener('change', () => preserve(exportKind.form,'kind',exportKind.value));
   document.querySelectorAll('[data-report-progress]').forEach(panel => {
     let attempts = 0;
     const timer = setInterval(async () => {
