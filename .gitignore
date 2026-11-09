@@ -15,6 +15,7 @@
 # Runtime state and internal development evidence
 /var/
 /Project_Progress/
+/Mid_PPT/
 /research/
 /tmp/
 __pycache__/

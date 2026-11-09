@@ -3,3 +3,9 @@
 @media(max-width:900px){.guide-layout{grid-template-columns:1fr}.guide-toc{position:static}.help-on-page{display:flex;flex-wrap:wrap;gap:12px}}@media(max-width:650px){.help-topics{grid-template-columns:1fr}.help-search>div{flex-wrap:wrap}.query-card{flex-direction:column}.help-search button{width:100%}.help-topic-card{padding:18px}.query-card .query-actions{width:100%}.query-card .rename-form{width:100%}}
 @media print{.guide-toc,.help-search,.no-print{display:none!important}.guide-layout{display:block}.guide-body details>*{display:block}.guide-body section{break-inside:auto}.sidebar,.topbar,.context-help{display:none!important}.workspace{margin:0!important}.content{padding:0!important}.surface{box-shadow:none!important}}
 @media print{.skip-link{display:none!important}.guide-faq dt,[data-theme=dark] .guide-faq dt{color:#17314f!important;break-after:avoid}.guide-body h2,.guide-body h3{break-after:avoid}.guide-body p{orphans:3;widows:3}.guide-body li,.guide-faq dd{break-inside:avoid}}
+
+.quick-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 28px;list-style:none;counter-reset:quick-step;padding:0;margin:24px 0 0}
+.quick-steps li{display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:12px;align-content:start;counter-increment:quick-step}
+.quick-steps li:before{content:counter(quick-step);grid-row:1/span 2;display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--line);border-radius:8px;color:var(--teal);font-size:13px;font-weight:600}
+.quick-steps h3{font-size:15px;line-height:28px;margin:0 0 5px}.quick-steps p{grid-column:2;margin:0;line-height:1.8;font-size:13px;color:var(--muted)}
+@media(max-width:900px){.quick-steps{grid-template-columns:1fr;gap:20px}}

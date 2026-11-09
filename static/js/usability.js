@@ -99,7 +99,7 @@
             const choose=document.createElement('button'); choose.type='button'; choose.className='btn btn-primary btn-sm'; choose.textContent='选择此'+label;
             choose.setAttribute('aria-label',`选择 ${item.name}，内部编号 ${item.id}`);
             choose.addEventListener('click',()=>{input.value=item.id; input.dispatchEvent(new Event('change',{bubbles:true})); dialog.close();});
-            const map=document.createElement('a'); map.href=item.map_url||item.url; map.target='_blank'; map.rel='noopener'; map.textContent=item.map_url?'地图查看（新窗口）':'查看详情（新窗口）';
+            const map=document.createElement('a'); map.href=item.map_url||item.url; map.target='_blank'; map.rel='noopener'; map.textContent=item.map_url?'地图查看':'查看详情';
             const actions=document.createElement('div'); actions.className='form-actions'; actions.append(choose,map);
             card.append(name,detail,meta,actions); results.append(card);
           }

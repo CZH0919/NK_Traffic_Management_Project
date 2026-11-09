@@ -1,0 +1,11 @@
+<section class="surface help-quick" id="start" aria-labelledby="quick-start-title">
+  <h2 id="quick-start-title">快速使用</h2>
+  <p>以查看皇后区 2025 年 1 月的事故情况为例：</p>
+  <ol class="quick-steps">
+    <li><h3>进入事故档案</h3><p>登录后，选择“事故与关联档案”，打开“事故档案”标签。</p></li>
+    <li><h3>填写地区和日期</h3><p>起始日期填 2025-01-01，截止日期填 2025-01-31，行政区选“皇后区”，其余条件留空，然后点击“查询”。</p></li>
+    <li><h3>查看事故记录</h3><p>在结果列表点击事故编号，查看时间、地点、伤亡及关联车辆和人员；“返回列表”可回到刚才的查询结果。</p></li>
+    <li><h3>查看数量和分布</h3><p>进入“统计与对比”，设置相同日期和行政区，选择“月份”或“日期”并点击“更新统计”；点击图表或表格数值可查看对应记录。</p></li>
+  </ol>
+  <div class="form-actions"><a class="btn btn-primary" href="{% url 'entity_list' 'crashes' %}">打开事故档案</a><a class="btn btn-outline-primary" href="{% url 'help_topic' 'records' %}">查看查询说明</a></div>
+</section>

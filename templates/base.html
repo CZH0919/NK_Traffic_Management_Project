@@ -36,7 +36,7 @@
 <main id="main" class="content" tabindex="-1">
 {% if isolated_copy %}<div class="notice notice-warning" role="status">隔离数据副本 · 此处修改和新增文件与主业务数据分开保存。</div>{% endif %}
 {% if messages %}<div aria-live="polite">{% for message in messages %}<div class="notice notice-success">{{ message }}</div>{% endfor %}</div>{% endif %}
-{% if user.is_authenticated and not is_help %}<div class="context-help"><a href="{{ help_url }}" target="_blank" rel="noopener">本页操作指南（新窗口）</a></div>{% endif %}
+{% if user.is_authenticated and not is_help %}<div class="context-help"><a href="{{ help_url }}" target="_blank" rel="noopener">本页操作指南</a></div>{% endif %}
 {% block content %}{% endblock %}
 <footer class="page-footer">统计时间以纽约当地时间为准。</footer></main></div>
 <script src="{% static 'vendor/bootstrap/bootstrap.bundle.min.js' %}" defer></script><script src="{% static 'js/app.js' %}?v={{ ui_asset_version }}" defer></script><script src="{% static 'js/operations.js' %}?v={{ ui_asset_version }}" defer></script><script src="{% static 'js/usability.js' %}?v={{ ui_asset_version }}" defer></script><script src="{% static 'js/product.js' %}?v={{ ui_asset_version }}" defer></script>{% block scripts %}{% endblock %}</body></html>
