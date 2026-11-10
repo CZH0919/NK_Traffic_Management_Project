@@ -12,4 +12,8 @@
 <symbol id="external" viewBox="0 0 24 24"><path d="M14 3h7v7m0-7L11 13M10 5H3v16h16v-7"/></symbol>
 <symbol id="menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
 <symbol id="lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3m-5 5v3"/></symbol>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+<symbol id="trend" viewBox="0 0 24 24"><path d="M3 3v18h18M6 15l5-5 4 3 6-8M17 5h4v4"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="m12 2 8 3v6c0 5-4 8-8 11-4-3-8-6-8-11V5ZM8 12l3 3 5-6"/></symbol>
+<symbol id="guide" viewBox="0 0 24 24"><path d="M12 5C9 2 5 2 2 3v17c3-1 7-1 10 2 3-3 7-3 10-2V3c-3-1-7-1-10 2Zm0 0v17M5 7h4M5 11h4M15 7h4M15 11h4"/></symbol>
 </defs></svg>

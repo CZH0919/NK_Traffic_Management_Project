@@ -29,14 +29,15 @@
     const original = chart.getOption();
     function paint(dark) {
       if (chart.isDisposed()) return;
-      const ink = dark ? '#dbe8ee' : '#486577', muted = dark ? '#acbfcc' : '#607887';
+      const ink = dark ? '#dbe8ee' : '#36566b', muted = dark ? '#acbfcc' : '#526d80';
       const line = dark ? '#3c5361' : '#cedce4', grid = dark ? '#2d4352' : '#e6eef2';
       const recolor = value => dark ? (darkColors[value] || value) : value;
+      const font = { fontFamily: '"Segoe UI", "Microsoft YaHei", sans-serif', fontSize: 13, lineHeight: 20 };
       const patch = {
-        color: original.color.map(recolor), textStyle: { color: ink },
-        tooltip: { backgroundColor: dark ? '#213846' : '#ffffff', borderColor: line, textStyle: { color: ink } },
+        color: original.color.map(recolor), textStyle: { ...font, color: ink },
+        tooltip: { backgroundColor: dark ? '#213846' : '#ffffff', borderColor: line, textStyle: { ...font, color: ink } },
         series: original.series.map(series => {
-          const style = { label: { color: ink } };
+          const style = { label: { ...font, color: ink } };
           for (const name of ['lineStyle', 'itemStyle', 'areaStyle']) {
             if (series[name]?.color) style[name] = { color: recolor(series[name].color) };
           }
@@ -44,10 +45,10 @@
         })
       };
       for (const axis of ['xAxis', 'yAxis']) if (original[axis]?.length) {
-        patch[axis] = original[axis].map(() => ({ axisLabel: { color: muted }, nameTextStyle: { color: muted }, axisLine: { lineStyle: { color: line } }, axisTick: { lineStyle: { color: line } }, splitLine: { lineStyle: { color: grid } } }));
+        patch[axis] = original[axis].map(() => ({ axisLabel: { ...font, color: muted }, nameTextStyle: { ...font, color: muted }, axisLine: { lineStyle: { color: line } }, axisTick: { lineStyle: { color: line } }, splitLine: { lineStyle: { color: grid } } }));
       }
-      if (original.legend?.length) patch.legend = original.legend.map(() => ({ textStyle: { color: ink }, inactiveColor: dark ? '#708494' : '#888888' }));
-      if (original.dataZoom?.length) patch.dataZoom = original.dataZoom.map(zoom => zoom.type === 'slider' ? { textStyle: { color: muted }, borderColor: line, backgroundColor: dark ? '#142735' : '#f4f8fa', fillerColor: dark ? '#61c9c130' : '#d8eceb', dataBackground: { lineStyle: { color: muted }, areaStyle: { color: muted } }, selectedDataBackground: { lineStyle: { color: dark ? '#61c9c1' : '#087f83' }, areaStyle: { color: dark ? '#61c9c1' : '#087f83' } }, handleStyle: { color: dark ? '#acbfcc' : '#ffffff', borderColor: line }, moveHandleStyle: { color: muted } } : {});
+      if (original.legend?.length) patch.legend = original.legend.map(() => ({ textStyle: { ...font, color: ink }, inactiveColor: dark ? '#708494' : '#888888' }));
+      if (original.dataZoom?.length) patch.dataZoom = original.dataZoom.map(zoom => zoom.type === 'slider' ? { textStyle: { ...font, fontSize: 12, lineHeight: 18, color: muted }, borderColor: line, backgroundColor: dark ? '#142735' : '#f4f8fa', fillerColor: dark ? '#61c9c130' : '#d8eceb', dataBackground: { lineStyle: { color: muted }, areaStyle: { color: muted } }, selectedDataBackground: { lineStyle: { color: dark ? '#61c9c1' : '#087f83' }, areaStyle: { color: dark ? '#61c9c1' : '#087f83' } }, handleStyle: { color: dark ? '#acbfcc' : '#ffffff', borderColor: line }, moveHandleStyle: { color: muted } } : {});
       // Merge styles only: preserve selected legends, zoom, values and drill-down events.
       chart.setOption(patch);
     }

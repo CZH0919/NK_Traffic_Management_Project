@@ -25,6 +25,6 @@ def navigation(request):
     return {**return_context(request), 'breadcrumb_label': breadcrumb, 'help_anchor': anchor,
             'help_url': '/help/' if anchor == 'start' else '/help/' + anchor + '/' + ('#'+section if section else ''),
             'is_help':page in ('help','help_topic'),
-            'current_page': page, 'ui_asset_version':'20261109-feedback2',
+            'current_page': page, 'ui_asset_version':'20261110-visual1',
             'report_workspace': bool(match and match.url_name in ('reports','report_new','report_detail','report_repeat','exports','export_new','export_detail','brief_detail','brief_edit')),
             'app_name': '城市交通研究','isolated_copy':settings.TRAFFIC_ISOLATED_COPY}

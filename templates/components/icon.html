@@ -1,1 +1,1 @@
-{% load static %}<svg class="icon {% if size %}icon-{{ size }}{% endif %}" aria-hidden="true"><use href="{% static 'img/icons.svg' %}#{{ name }}"></use></svg>
+{% load static %}<svg class="icon {% if size %}icon-{{ size }}{% endif %}" aria-hidden="true"><use href="{% static 'img/icons.svg' %}?v={{ ui_asset_version }}#{{ name }}"></use></svg>
